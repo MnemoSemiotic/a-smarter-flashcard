@@ -1,0 +1,8 @@
+2018_04_16
+  MORNING:
+    - exported data to csv
+    - built initial file structure for problem exploration
+    - wrote function to strip html
+      - also strips matrix operation formulas with <w, x> format
+    - wrote function to read csv, apply names
+    - wrote function to return dataframe w/o html

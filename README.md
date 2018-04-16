@@ -21,7 +21,7 @@ I have a collection of 10,000 flash cards, composed of questions and answers, co
 ### **PROJECT PROGRESSION Minimum Viable Product:**
 1. Create data cleaning pipeline.
     * Strip html from cards
-    * Standardize or ignore formulas that are not consistent across cards.
+    * Standardize, modify or ignore formulas that are not consistent across cards.
     * Modify entries that lead to erroneous topics.
 2. Explore NLP strategies to allow for meaningful clustering
     * Stem, Lemmatize, Stopwords
