@@ -28,8 +28,15 @@ def strip_html(raw_html):
     '''
     cleanr = re.compile('<.*?>')
     cleantext = re.sub(cleanr, ' ', raw_html)
-    return cleantext
+    cl_1 = cleantext.replace('&nbsp;',' ')
+    cl_2 = cl_1.replace('&gt;','>')
+    cl_3 = cl_2.replace('&lt;','<')
+    return cl_3
 
+def collapse_df(df):
+    df_collapsed = df.copy()
+    df_collapsed['record'] = df['question'] + ' ' + df['answer']
+    return df_collapsed['record']
 
 ''' ######################################################################## '''
 if __name__ == '__main__':

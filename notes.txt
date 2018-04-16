@@ -6,3 +6,12 @@
       - also strips any formulas with <w, x> format
     - wrote function to read csv, apply names
     - wrote function to return dataframe w/o html
+
+  AFTERNOON:
+    - collapsed dataframe into single record with both question and answer text
+    - Performed topic modeling with LDA, LSI and NMF
+      - Discovered that many of my flashcards have error messages due to the export from anki, due to latex not being installed
+    - attempting to resolve latex issues with anki to see if i can get a clean import
+      - resolved latex issue related to bad data export
+    - Currently, there are about 4200 unique words
+    - attempting to remove commonly occurring latex words
