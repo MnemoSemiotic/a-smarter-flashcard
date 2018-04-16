@@ -5,12 +5,12 @@
 #### Tovio Roberts, Capstone 2 @Galvanize
 
 
-### *GOALS:*
+### **GOALS:**
 - Clean and categorize flash cards in a ‘reasonable’ way through use of NLP
 - Predict the category of new flash card entries
 - Discern strong and weak subjects for a user.
 
-### *DATA*
+### **DATA**
 I have a collection of 10,000 flash cards, composed of questions and answers, compiled by students of data science, ml, and statistics. There are many more cards available, and, if need be, I can include other subjects. The data are collected from three sources:
 - AnkiWeb
 - Quizlet
@@ -18,7 +18,7 @@ I have a collection of 10,000 flash cards, composed of questions and answers, co
 
 #### A single entry is composed of a question and answer.
 
-### *PROJECT PROGRESSION Minimum Viable Product:*
+### **PROJECT PROGRESSION Minimum Viable Product:**
 1. Create data cleaning pipeline.
     * Strip html from cards
     * Standardize or ignore formulas that are not consistent across cards.
