@@ -32,14 +32,16 @@ I have a collection of 10,000 flash cards, composed of questions and answers, co
     * User chosen categories become target labels.
 4. Predict the category of a new card using chosen target labels.
 
-### *Improvement 1: Provide an Interface for Card Review*
+### *Improvement 1: Provide a simple API for flashcards*
+
+### *Improvement 2: Provide an Interface for Card Review*
 1. Swipe Left/Swipe Right simple front end.
 2. Update success/fail.
 3. Discern “Strong” and “Weak” topics.
 
-### *Improvement 2: Build Questions from Answers*
+### *Improvement 3: Build Questions from Answers*
 1. Generate flash cards from pasted blocks of text.
 
-### *Improvement 3: Smart Flashcard Delivery*
+### *Improvement 4: Smart Flashcard Delivery*
 1. Incorporate Spaced Repetition.
 2. Balance mixture of “Weak” and “Strong” topics.

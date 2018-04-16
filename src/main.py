@@ -7,8 +7,3 @@ if __name__ == '__main__':
     df = clean.read_cards(data)
 
     df_clean = clean.clean_dataframe(df)
-
-    df_clean.tail()
-
-    df.tail()
-    
