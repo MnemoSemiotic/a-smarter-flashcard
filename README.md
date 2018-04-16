@@ -20,7 +20,9 @@ I have a collection of 10,000 flash cards, composed of questions and answers, co
 
 ### *PROJECT PROGRESSION Minimum Viable Product:*
 1. Create data cleaning pipeline.
-Drop cards that are not viable (e.g., composed of images). - Standardize formulas that are not consistent across cards. - Modify entries that lead to erroneous topics.
+  a. Drop cards that are not viable (e.g., composed of images).
+  b. Standardize formulas that are not consistent across cards.
+  c. Modify entries that lead to erroneous topics.
 2. Use Clustering to discern general topics.
 Provide list of “quintessential” cards, most-common words per category. - User chosen categories become target labels.
 3. Predict the category of a new card.
