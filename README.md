@@ -3,7 +3,8 @@
 [Google Presentation](https://docs.google.com/presentation/d/1382PGj1Ljha43d8BnQAKAfSGJM_bGphilbakYj5520A/edit?usp=sharing)
 
 ## In Search of a Smarter Flashcard
-### Discerning Topics, Predicting Categories Tovio Roberts
+### Discerning Topics, Predicting Categories
+#### Tovio Roberts, Capstone 2 @Galvanize
 
 
 ### *GOALS:*
