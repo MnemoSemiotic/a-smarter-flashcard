@@ -24,8 +24,17 @@
 2018_04_17
   MORNING:
     - consider removing \item, \begin, \end, and other document formatting tags, but not other math-meaningful latex
-      - removed item, generated wordcloud
-      
-NEXT:  Build cleaner to remove latex tags, put in preclean, generate another wordcloud
+      - removed item
+        -generated wordcloud
+      - removed all document latex, chose to leave in latex pertaining to formulas
+        - generated wordcloud
+    - investigating nan values (110 records)
+      - don't want to drop nans as the index to the original cards is meaningful
+      - the first nan is a meaningful card that has had its string removed
+      - the error is not occurring in the cleaning function
+      - it turns out that the answer column has some nan values.
+        - correcting this by preprocessing nan values with replacing nan values with ' ' blank space
 
 THEN: look over pipeline notebook from Chris
+
+CONSIDER: replace latex operations with meaningful words

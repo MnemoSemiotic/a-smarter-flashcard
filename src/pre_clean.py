@@ -14,14 +14,9 @@ def read_cards(file_path):
 def clean_dataframe(df):
     df2 = df.copy()
 
-    df2 = df2.applymap(lambda x: strip_latex(strip_html(x)) if type(x) is str else x)
+    df2 = df2.applymap(lambda x: strip_latex(strip_html(x)) if type(x) is str else ' ')
 
-
-    # Remove html
-    # df2.loc[:,["question", "answer"]] = df2.loc[:,["question", "answer"]].apply(lambda x: strip_html(str(x)))
-    # df2['question'] = df['question'].map(lambda x: strip_latex(x))
-    # df2['answer']   = df['answer'].map(lambda x: strip_html(str(x)))
-    # df2['answer']   = df['answer'].map(lambda x: strip_latex(str(x)))
+    print(df2['answer'][79])
 
     return df2
 
@@ -39,24 +34,43 @@ def strip_html(raw_html):
     return cl_3
 
 def strip_latex(text):
-    cl_1 = text.replace('\item', ' ')
-    return cl_1
+    latex_remove = [r'\underline', r'\\textbf', r'\pagebreak', r'\item', r'\\textit', r'\\verb', r'\par', r'\\begin', r'flushleft', r'flushright', r'{center}', r'\end', r'{itemize}']
+    output = text
+
+    for string in latex_remove:
+        output = output.replace(string, ' ')
+
+    return output
 
 def collapse_df(df):
+    # df_collapsed =  df['question'] + ' ' + str(df['answer'])
     df_collapsed = df.copy()
-    df_collapsed['record'] = df['question'] + ' ' + df['answer']
+
+    df_collapsed["record"] = df["question"].map(str) + df["answer"].map(str)
     return df_collapsed['record']
 
 ''' ######################################################################## '''
 if __name__ == '__main__':
-    strp_test = '''What three summary statistics do all four of these scatterplots have in common? <br /><img src="Screen shot 2012-06-26 at 10.00.02 PM.png" /> mean, standard deviation, and Pearson correlation (http://en.wikipedia.org/wiki/Anscombe\'s_quartet) <div>&gt; the moral is that these summary statistics can be misleading and it\'s good to look at the actual distribution&nbsp;</div>'''
-    print(strip_html(strp_test))
-
 
     data = 'data/ds_flashcards_2.txt'
     df = read_cards(data)
-    df['question'][0]
+
     df_clean = clean_dataframe(df)
 
-    df_clean['question'][0]
-    
+    # df_clean.tail()
+
+    df_collapsed = collapse_df(df_clean)
+
+    # df_collapsed.str.contains('ttt').nunique()
+    df_collapsed[79]
+
+    df_collapsed.isnull().sum()
+    ## There are 110 NaN values after cleaning
+
+    # Create series as mask for nan values
+    nulls = pd.isnull(df_collapsed)
+
+    nulls[nulls == True].index[0]
+
+    df_collapsed[79]
+    df['question'][79]

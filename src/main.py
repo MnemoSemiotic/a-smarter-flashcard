@@ -14,21 +14,28 @@ if __name__ == '__main__':
 
     df_clean = clean.clean_dataframe(df)
 
-    df_clean['question'][0]
+    # df_clean.tail()
 
     df_collapsed = clean.collapse_df(df_clean)
 
     df_collapsed.shape
     type(df_collapsed)
 
-    df_collapsed.str.contains('ttt')
-    df_collapsed[0]
+    # df_collapsed.str.contains('ttt').nunique()
+    df_collapsed[79]
 
     # Create Wordcloud from data with stripped out html
-    wc.create_wordcloud_from_df(df_collapsed)
+    # wc.create_wordcloud_from_df(df_collapsed)
 
 
+    df_collapsed.isnull().sum()
+    ## There are 110 NaN values after cleaning
 
+    # Create series as mask for nan values
+    nulls = pd.isnull(df_collapsed)
+    # nulls[nulls == True].index[0]
+    # df_collapsed[79]
+    # df['question'][79]
 
 
     '''
@@ -38,6 +45,7 @@ if __name__ == '__main__':
 
 
     vectorizer = TfidfVectorizer(min_df=5, max_df=0.80, stop_words='english', lowercase=True, token_pattern='[a-zA-Z\-][a-zA-Z\-]{2,}')
+
     data_vectorized = vectorizer.fit_transform(df_collapsed)
 
     len(vectorizer.get_feature_names())
