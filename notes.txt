@@ -20,3 +20,7 @@
       - exploring word counts in TfidfVectorizer
       - creating wordcloud function so I can see prominent (and meaningless) words
         - generated wordclouds for raw text and for text after removing html
+
+NEXT:  Build cleaner to remove latex tags, put in preclean, generate another wordcloud
+
+THEN: look over pipeline notebook from Chris
