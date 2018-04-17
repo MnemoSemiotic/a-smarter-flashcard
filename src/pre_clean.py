@@ -1,6 +1,8 @@
 import re
 import pandas as pd
 import src.latex_dictionary as ltx
+from nltk.stem.snowball import SnowballStemmer
+
 
 def read_cards(file_path):
     '''
@@ -14,7 +16,7 @@ def read_cards(file_path):
 def clean_dataframe(df):
     df2 = df.copy()
 
-    df2 = df2.applymap(lambda x: strip_latex(strip_html(x)) if type(x) is str else ' ')
+    df2 = df2.applymap(lambda x: stemmer(strip_latex(strip_html(x))) if type(x) is str else ' ')
 
     print(df2['answer'][79])
 
@@ -50,6 +52,12 @@ def collapse_df(df):
     df_collapsed["record"] = df["question"].map(str) + df["answer"].map(str)
     return df_collapsed['record']
 
+def stemmer(text):
+    snowball = SnowballStemmer('english')
+    text_split = text.split()
+    text_snowball = [snowball.stem(word) for word in text_split]
+    return_text = ' '.join(text_snowball)
+    return return_text
 ''' ######################################################################## '''
 if __name__ == '__main__':
 

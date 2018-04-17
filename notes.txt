@@ -43,6 +43,10 @@
       - output wordcloud
 
   AFTERNOON
+    - Stemming tf-idf matrix
+      - fixed removal of 'tt' string
+      - implemented snowball stemmer for tf-idf
+
 
 NEXT: implement Word2Vec and run same models
 

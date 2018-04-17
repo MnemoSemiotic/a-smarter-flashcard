@@ -17,9 +17,11 @@ if __name__ == '__main__':
     # df_clean.tail()
 
     df_collapsed = clean.collapse_df(df_clean)
-
+    df['question'][79]
+    df_collapsed[79]
     df_collapsed.shape
     type(df_collapsed)
+    df.shape
 
     # # looking for occurrence of 'ttt' string
     ttt = df_collapsed.str.contains('ttt')
@@ -29,7 +31,7 @@ if __name__ == '__main__':
     # df_collapsed[79]
 
     # # Create Wordcloud from data with stripped out html
-    wc.create_wordcloud_from_df(df_collapsed)
+    # wc.create_wordcloud_from_df(df_collapsed)
 
 
     # df_collapsed.isnull().sum()
@@ -52,9 +54,9 @@ if __name__ == '__main__':
 
     data_vectorized = vectorizer.fit_transform(df_collapsed)
 
-    len(vectorizer.get_feature_names())
+    feature_names = vectorizer.get_feature_names()
 
-
+    print(feature_names[8])
     # Build a Latent Dirichlet Allocation Model
     lda_model = LatentDirichletAllocation(n_components=NUM_TOPICS, max_iter=10, learning_method='online')
     lda_Z = lda_model.fit_transform(data_vectorized)
