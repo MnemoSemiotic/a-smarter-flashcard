@@ -1,6 +1,6 @@
 import re
 import pandas as pd
-
+import src.latex_dictionary as ltx
 
 def read_cards(file_path):
     '''
@@ -34,7 +34,8 @@ def strip_html(raw_html):
     return cl_3
 
 def strip_latex(text):
-    latex_remove = [r'\underline', r'\\textbf', r'\pagebreak', r'\item', r'\\textit', r'\\verb', r'\par', r'\\begin', r'flushleft', r'flushright', r'{center}', r'\end', r'{itemize}', r'ttt', r'tt']
+    latex_remove = ltx.get_latex_dict()
+    latex_keys = latex_remove.keys()
     output = text
 
     for string in latex_remove:

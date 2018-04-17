@@ -36,6 +36,13 @@
         - correcting this by preprocessing nan values with replacing nan values with ' ' blank space
     - drilling into erroneous words in wordcloud
       - added 'ttt' and 'tt' to latex remove function
+        - generated wordcloud
+    - shapes are consistent across dataframe, series, and models
+    - creating dictionary of latex terms for initially removing all latex, later transforming all latex to meaningful words
+      - completed dictionary, updated remove latex function
+      - output wordcloud
 
-THEN: look over pipeline notebook from Chris
-CONSIDER: replace latex operations with meaningful words
+
+NEXT: implement Word2Vec and run same models
+
+THEN: visualize output of models and dimension reduction
