@@ -21,6 +21,11 @@
       - creating wordcloud function so I can see prominent (and meaningless) words
         - generated wordclouds for raw text and for text after removing html
 
+2018_04_17
+  MORNING:
+    - consider removing \item, \begin, \end, and other document formatting tags, but not other math-meaningful latex
+      - removed item, generated wordcloud
+      
 NEXT:  Build cleaner to remove latex tags, put in preclean, generate another wordcloud
 
 THEN: look over pipeline notebook from Chris

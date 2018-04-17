@@ -14,14 +14,20 @@ if __name__ == '__main__':
 
     df_clean = clean.clean_dataframe(df)
 
+    df_clean['question'][0]
 
     df_collapsed = clean.collapse_df(df_clean)
 
     df_collapsed.shape
     type(df_collapsed)
 
+    df_collapsed.str.contains('ttt')
+    df_collapsed[0]
+
     # Create Wordcloud from data with stripped out html
     wc.create_wordcloud_from_df(df_collapsed)
+
+
 
 
 
