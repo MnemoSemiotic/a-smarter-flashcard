@@ -46,7 +46,13 @@
     - Stemming tf-idf matrix
       - fixed removal of 'tt' string
       - implemented snowball stemmer for tf-idf
+    - Reworking LDA to take CountVectorizer instead of TfidfVectorizer, as per
+      reading
 
+
+NEXT: most frequent word stems
+
+NEXT: make pie charts for some of the rows for a given model
 
 NEXT: implement Word2Vec and run same models
 

@@ -11,6 +11,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 if __name__ == '__main__':
     data = 'data/ds_flashcards_2.txt'
     df = clean.read_cards(data)
+    df['question'][79]
 
     df_clean = clean.clean_dataframe(df)
 
@@ -44,33 +45,40 @@ if __name__ == '__main__':
     # df['question'][79]
 
 
+
+
+
     '''
     Topic Modeling
     '''
     NUM_TOPICS = 5
 
+    tfidf_vectorizer = TfidfVectorizer(min_df=5, max_df=0.80, stop_words='english', lowercase=True, token_pattern='[a-zA-Z\-][a-zA-Z\-]{2,}')
 
-    vectorizer = TfidfVectorizer(min_df=5, max_df=0.80, stop_words='english', lowercase=True, token_pattern='[a-zA-Z\-][a-zA-Z\-]{2,}')
+    count_vectorizer = CountVectorizer(min_df=5, max_df=0.80, stop_words='english', lowercase=True, token_pattern='[a-zA-Z\-][a-zA-Z\-]{2,}')
 
-    data_vectorized = vectorizer.fit_transform(df_collapsed)
+    data_tfidf_vectorized = tfidf_vectorizer.fit_transform(df_collapsed)
+    # feature_names = tfidf_vectorizer.get_feature_names()
+    data_count_vectorized = count_vectorizer.fit_transform(df_collapsed)
 
-    feature_names = vectorizer.get_feature_names()
+    print(data_count_vectorized)
 
-    print(feature_names[8])
+    # print(feature_names[8])
+
     # Build a Latent Dirichlet Allocation Model
     lda_model = LatentDirichletAllocation(n_components=NUM_TOPICS, max_iter=10, learning_method='online')
-    lda_Z = lda_model.fit_transform(data_vectorized)
+    lda_Z = lda_model.fit_transform(data_count_vectorized)
     print(lda_Z.shape)  # (NO_DOCUMENTS, NO_TOPICS)
     print(lda_Z[0])
 
     # Build a Non-Negative Matrix Factorization Model
     nmf_model = NMF(n_components=NUM_TOPICS)
-    nmf_Z = nmf_model.fit_transform(data_vectorized)
+    nmf_Z = nmf_model.fit_transform(data_tfidf_vectorized)
     print(nmf_Z.shape)  # (NO_DOCUMENTS, NO_TOPICS)
 
     # Build a Latent Semantic Indexing Model
     lsi_model = TruncatedSVD(n_components=NUM_TOPICS)
-    lsi_Z = lsi_model.fit_transform(data_vectorized)
+    lsi_Z = lsi_model.fit_transform(data_tfidf_vectorized)
     print(lsi_Z.shape)  # (NO_DOCUMENTS, NO_TOPICS)
 
     # Let's see how the first document in the corpus looks like in different topic spaces
