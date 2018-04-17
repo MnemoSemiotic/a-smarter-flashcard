@@ -14,4 +14,9 @@
     - attempting to resolve latex issues with anki to see if i can get a clean import
       - resolved latex issue related to bad data export
     - Currently, there are about 4200 unique words
+    - Switched from CountVectorizer to TfidfVectorizer
+      - set max document frequency to 80% to drive down commonly occurring words
     - attempting to remove commonly occurring latex words
+      - exploring word counts in TfidfVectorizer
+      - creating wordcloud function so I can see prominent (and meaningless) words
+        - generated wordclouds for raw text and for text after removing html

@@ -1,9 +1,11 @@
 import src.pre_clean as clean
+import src.wordcloud as wc
 import pandas as pd
 
 from sklearn.decomposition import NMF, LatentDirichletAllocation, TruncatedSVD
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import euclidean_distances
+from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 if __name__ == '__main__':
@@ -16,21 +18,29 @@ if __name__ == '__main__':
     df_collapsed = clean.collapse_df(df_clean)
 
     df_collapsed.shape
+    type(df_collapsed)
 
-    df_collapsed[2800]
+    # Create Wordcloud from data with stripped out html
+    wc.create_wordcloud_from_df(df_collapsed)
+
+
 
     '''
     Topic Modeling
     '''
     NUM_TOPICS = 5
 
-    vectorizer = CountVectorizer(min_df=5, max_df=0.9, stop_words='english', lowercase=True, token_pattern='[a-zA-Z\-][a-zA-Z\-]{2,}')
+
+    vectorizer = TfidfVectorizer(min_df=5, max_df=0.80, stop_words='english', lowercase=True, token_pattern='[a-zA-Z\-][a-zA-Z\-]{2,}')
     data_vectorized = vectorizer.fit_transform(df_collapsed)
+
+    len(vectorizer.get_feature_names())
 
     # Build a Latent Dirichlet Allocation Model
     lda_model = LatentDirichletAllocation(n_components=NUM_TOPICS, max_iter=10, learning_method='online')
     lda_Z = lda_model.fit_transform(data_vectorized)
     print(lda_Z.shape)  # (NO_DOCUMENTS, NO_TOPICS)
+    print(lda_Z[0])
 
     # Build a Non-Negative Matrix Factorization Model
     nmf_model = NMF(n_components=NUM_TOPICS)
