@@ -42,6 +42,7 @@
       - completed dictionary, updated remove latex function
       - output wordcloud
 
+  AFTERNOON
 
 NEXT: implement Word2Vec and run same models
 

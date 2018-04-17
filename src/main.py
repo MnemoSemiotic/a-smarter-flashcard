@@ -29,7 +29,7 @@ if __name__ == '__main__':
     # df_collapsed[79]
 
     # # Create Wordcloud from data with stripped out html
-    # wc.create_wordcloud_from_df(df_collapsed)
+    wc.create_wordcloud_from_df(df_collapsed)
 
 
     # df_collapsed.isnull().sum()
