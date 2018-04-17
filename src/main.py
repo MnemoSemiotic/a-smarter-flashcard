@@ -21,7 +21,13 @@ if __name__ == '__main__':
     df_collapsed.shape
     type(df_collapsed)
 
-    # df_collapsed.str.contains('ttt').nunique()
+    # looking for occurrence of 'ttt' string
+    ttt = df_collapsed.str.contains('ttt')
+    len(ttt[ttt==True])
+    ttt[ttt==True]
+
+    df_collapsed[333]
+
     df_collapsed[79]
 
     # Create Wordcloud from data with stripped out html
@@ -29,7 +35,7 @@ if __name__ == '__main__':
 
 
     df_collapsed.isnull().sum()
-    ## There are 110 NaN values after cleaning
+    ## There are 110 NaN values after cleaning, solved!
 
     # Create series as mask for nan values
     nulls = pd.isnull(df_collapsed)

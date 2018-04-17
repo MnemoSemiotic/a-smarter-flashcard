@@ -34,7 +34,8 @@
       - the error is not occurring in the cleaning function
       - it turns out that the answer column has some nan values.
         - correcting this by preprocessing nan values with replacing nan values with ' ' blank space
+    - drilling into erroneous words in wordcloud
+      - added 'ttt' and 'tt' to latex remove function
 
 THEN: look over pipeline notebook from Chris
-
 CONSIDER: replace latex operations with meaningful words
