@@ -6,14 +6,14 @@
 
 
 ### **GOALS:**
-- Clean flash card pool in a way that can be generalized to new card types
-- Topic Model in a ‘reasonable’ way so as to automate similarity selection in an application
+- Clean flash card pool in a way that can be generalized to new card content
+- Topic Model in a ‘reasonable’ way so as to enable simple similarity selection in an application
 - Discuss discerning strong and weak subjects for a user
   - How to deliver the most "helpful" study materials
   - Associative Database --> Extrapolative Learning
 
 ### **DATA**
-3 collections of ~12,000 each, flash cards.  These are divided into 3 general categories:
+3 collections of ~12,000 each, flash cards, ~36,000 total.  These are divided into 3 general categories:
 - Data Science
 - Biology
 - History
@@ -41,7 +41,7 @@ The data sets are compiled from three sources:
 
 
 ### *Improvement 1: Provide a simple API for flashcards*
-1. Build topic distribution table
+1. Build topic distribution table when new cards are added
 2. Retrieve flashcard
 3. Update success table for flashcard user
 
