@@ -54,7 +54,7 @@
       - biology deck
       - history deck
     - adding function to remove anki closure snippets (c1::, c2::, etc)
-
+    - editing README to reflect discussion with Eliot
 
 
 NEXT: most frequent word stems

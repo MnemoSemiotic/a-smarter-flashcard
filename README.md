@@ -1,22 +1,29 @@
 [Google Presentation](https://docs.google.com/presentation/d/1382PGj1Ljha43d8BnQAKAfSGJM_bGphilbakYj5520A/edit?usp=sharing)
 
 # In Search of a Smarter Flashcard
-## Discerning Topics, Predicting Categories
+## Discerning Topics, Pedagogical Implications
 #### Tovio Roberts, Capstone 2 @Galvanize
 
 
 ### **GOALS:**
-- Clean and categorize flash cards in a ‘reasonable’ way through use of NLP
-- Predict the category of new flash card entries
-- Discern strong and weak subjects for a user.
+- Clean flash card pool in a way that can be generalized to new card types
+- Topic Model in a ‘reasonable’ way so as to automate similarity selection in an application
+- Discuss discerning strong and weak subjects for a user
+  - How to deliver the most "helpful" study materials
+  - Associative Database --> Extrapolative Learning
 
 ### **DATA**
-I have a collection of 10,000 flash cards, composed of questions and answers, compiled by students of data science, ml, and statistics. There are many more cards available, and, if need be, I can include other subjects. The data are collected from three sources:
+3 collections of ~12,000 each, flash cards.  These are divided into 3 general categories:
+- Data Science
+- Biology
+- History
+
+#### Each "card" is composed of a question and an answer.
+
+The data sets are compiled from three sources:
 - AnkiWeb
 - Quizlet
 - My own collection
-
-#### A single entry is composed of a question and answer.
 
 ### **PROJECT PROGRESSION Minimum Viable Product:**
 1. Create data cleaning pipeline.
@@ -25,23 +32,25 @@ I have a collection of 10,000 flash cards, composed of questions and answers, co
     * Modify entries that lead to erroneous topics.
 2. Explore NLP strategies to allow for meaningful clustering
     * Stem, Lemmatize, Stopwords
-    * Bag of Words
-    * Word2Vec
-3. Use Clustering to discern general topics.
-    * Provide list of “quintessential” cards, most-common words per category.
+    * Count Vector
+    * TF-IDF Vector
+3. Use Clustering to analyze topics within a single subject corpus.
+    * Provide list of “quintessential” words for each topic, most-common words per category.
     * User chosen categories become target labels.
-4. Predict the category of a new card using chosen target labels.
+4. Apply same Topic modeling to the full pool of cards
+
 
 ### *Improvement 1: Provide a simple API for flashcards*
+1. Build topic distribution table
+2. Retrieve flashcard
+3. Update success table for flashcard user
 
 ### *Improvement 2: Provide an Interface for Card Review*
 1. Swipe Left/Swipe Right simple front end.
 2. Update success/fail.
 3. Discern “Strong” and “Weak” topics.
 
-### *Improvement 3: Build Questions from Answers*
-1. Generate flash cards from pasted blocks of text.
-
-### *Improvement 4: Smart Flashcard Delivery*
-1. Incorporate Spaced Repetition.
-2. Balance mixture of “Weak” and “Strong” topics.
+### *Improvement 3: Smart Flashcard Delivery*
+1. Incorporate Spaced Repetition and randomness settings into reviews.
+2. Use similarity metrics to discern “Weak” and “Strong” topics, based on card review successes.
+3. Deliver review cards as a function of spaced repetition, strength, and similarity.
