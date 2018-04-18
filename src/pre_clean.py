@@ -16,7 +16,7 @@ def read_cards(file_path):
 def clean_dataframe(df):
     df2 = df.copy()
 
-    df2 = df2.applymap(lambda x: stemmer(strip_latex(strip_html(x))) if type(x) is str else ' ')
+    df2 = df2.applymap(lambda x: stemmer(strip_latex(strip_anki(strip_html(x)))) if type(x) is str else ' ')
 
     print(df2['answer'][79])
 
@@ -44,6 +44,15 @@ def strip_latex(text):
         output = output.replace(string, ' ')
 
     return output
+
+def strip_anki(text):
+    cl_1 = text.replace('c1::', '')
+    cl_2 = text.replace('c2::', '')
+    cl_3 = text.replace('c3::', '')
+    cl_4 = text.replace('c4::', '')
+    cl_5 = text.replace('c5::', '')
+    cl_6 = text.replace('c6::', '')
+    return cl_6
 
 def collapse_df(df):
     # df_collapsed =  df['question'] + ' ' + str(df['answer'])

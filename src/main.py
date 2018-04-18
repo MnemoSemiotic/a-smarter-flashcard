@@ -9,7 +9,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 
 
 if __name__ == '__main__':
-    data = 'data/ds_flashcards_2.txt'
+    data = 'data/datascience_flashcards.txt'
     df = clean.read_cards(data)
     df['question'][79]
 
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     # feature_names = tfidf_vectorizer.get_feature_names()
     data_count_vectorized = count_vectorizer.fit_transform(df_collapsed)
 
-    print(data_count_vectorized)
+    type(data_count_vectorized)
 
     # print(feature_names[8])
 

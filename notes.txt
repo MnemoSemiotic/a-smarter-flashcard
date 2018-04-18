@@ -46,8 +46,15 @@
     - Stemming tf-idf matrix
       - fixed removal of 'tt' string
       - implemented snowball stemmer for tf-idf
-    - Reworking LDA to take CountVectorizer instead of TfidfVectorizer, as per
-      reading
+    - Reworking LDA to take CountVectorizer instead of TfidfVectorizer, as per reading on the topic
+
+2018_04_18
+  MORNING
+    - compiling more data
+      - biology deck
+      - history deck
+    - adding function to remove anki closure snippets (c1::, c2::, etc)
+
 
 
 NEXT: most frequent word stems
