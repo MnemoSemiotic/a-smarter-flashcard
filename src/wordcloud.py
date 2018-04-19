@@ -40,7 +40,7 @@ def create_wordcloud(text):
     plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
     # plt.show()
-    plt.savefig('temp.png', dpi=dpi)
+    plt.savefig('wordmap_temp.png', dpi=dpi)
 
 if __name__ == '__main__':
 

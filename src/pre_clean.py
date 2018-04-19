@@ -1,6 +1,6 @@
 import re
 import pandas as pd
-import src.latex_dictionary as ltx
+import latex_dictionary as ltx
 from nltk.stem.snowball import SnowballStemmer
 
 
@@ -33,7 +33,8 @@ def strip_html(raw_html):
     cl_1 = cleantext.replace('&nbsp;',' ')
     cl_2 = cl_1.replace('&gt;','>')
     cl_3 = cl_2.replace('&lt;','<')
-    return cl_3
+    cl_4 = cl_3.replace('?',' ')
+    return cl_4
 
 def strip_latex(text):
     latex_remove = ltx.get_latex_dict()
@@ -58,7 +59,7 @@ def collapse_df(df):
     # df_collapsed =  df['question'] + ' ' + str(df['answer'])
     df_collapsed = df.copy()
 
-    df_collapsed["record"] = df["question"].map(str) + df["answer"].map(str)
+    df_collapsed["record"] = df["question"].map(str) + ' ' + df["answer"].map(str)
     return df_collapsed['record']
 
 def stemmer(text):
@@ -67,6 +68,9 @@ def stemmer(text):
     text_snowball = [snowball.stem(word) for word in text_split]
     return_text = ' '.join(text_snowball)
     return return_text
+
+
+
 ''' ######################################################################## '''
 if __name__ == '__main__':
 
