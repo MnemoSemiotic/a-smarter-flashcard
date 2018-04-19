@@ -91,7 +91,7 @@ Off-topic cards are likely present
 - With that in mind, let's consider a data model...
 --------------------------------------------------------------------------------
 ## **The Data:** Working toward Simple MVC
-![Simple MVC Concept](images/07_simple_app_design.png)
+![07_simple_app_design.png](images/07_simple_app_design.png)
 - Flash Card Pool: all flash cards in original form
   - fields may contain latex, html
 - Topic Distribution Table:
@@ -101,7 +101,7 @@ Off-topic cards are likely present
   - For [Spaced Repetition](https://en.wikipedia.org/wiki/Spaced_repetition), records last time viewed
 --------------------------------------------------------------------------------
 ## **The Data:** What it looks like RAW
-![Raw Data Science wordmap](images/00_wordmap_raw_data.png)
+![00_wordmap_raw_data.png](images/00_wordmap_raw_data.png)
 - This is the raw data from the Data Science FlashCard deck
 
 #### We Need to...
@@ -110,47 +110,47 @@ Off-topic cards are likely present
 * Modify entries that lead to erroneous topics.
 --------------------------------------------------------------------------------
 ## Cleaning...
-![Data Science wordmap - Cleaning](images/data_cleaning.gif)
+![data_cleaning.gif](images/data_cleaning.gif)
 
 --------------------------------------------------------------------------------
-### Data Science Cards Cleaned:
-![Data Science wordmap - cleaned](images/06_datascience_wordmap_after_stemming.png)
+### Data Science Cards Cleaned and Stemmed:
+![06_datascience_wordmap_after_stemming.png](images/06_datascience_wordmap_after_stemming.png)
 
 --------------------------------------------------------------------------------
-### Biology Cards Cleaned (sort of):
-![Biology wordmap - cleaned](images/06b_biology_wordmap_after_stemming.png)
+### Biology Cards Cleaned (sort of) and Stemmed:
+![06b_biology_wordmap_after_stemming.png](images/06b_biology_wordmap_after_stemming.png)
 - There are some artifacts from javascript here that will need to be cleaned up eventually.
   - But, what if we have flashcards about javascript???
 - We will see these erroneous words (`amask`, `display`) reappear during topic modeling.
 --------------------------------------------------------------------------------
-### History Cards Cleaned:
-![History wordmap - cleaned](images/06b_history_wordmap_after_stemming.png)
+### History Cards Cleaned and Stemmed:
+![06b_history_wordmap_after_stemming.png](images/06b_history_wordmap_after_stemming.png)
 --------------------------------------------------------------------------------
 ## How do the 3 decks compare to each other?
 ### Some Selected Word Counts:
-![Selected Words](images/08_some_random_word_counts.png)
+![08_some_random_word_counts.png](images/08_some_random_word_counts.png)
 --------------------------------------------------------------------------------
 ### Euclidean Distances betw Raw Decks
-![Distances betw Raw Decks](images/10_euclidian_distance_raw.png)
+![10_euclidian_distance_raw.png](images/10_euclidian_distance_raw.png)
 
-![eucl_distance_raw.png](images/12_MDS_eucl_distance_raw.png)
+![12_MDS_eucl_distance_raw.png](images/12_MDS_eucl_distance_raw.png)
 - Multi-dimensional Scaling (MDS) on Raw decks Euclidean distances
 
-### Euclidean Distances betw Cleaned Decks
-![Distances betw Clean Decks](images/10_euclidian_distance_clean.png)
+### Euclidean Distances betw Cleaned/Stemmed Decks
+![10_euclidian_distance_clean.png](images/10_euclidian_distance_clean.png)
 
-![eucl_distance_clean.png](images/12_MDS_eucl_distance_clean.png)
+![12_MDS_eucl_distance_clean.png](images/12_MDS_eucl_distance_clean.png)
 - Multi-dimensional Scaling (MDS) on Cleaned/Stemmed decks Euclidean distances
 
 --------------------------------------------------------------------------------
 ### Cosine Similarities betw Raw Decks
-![Distances betw Raw Decks](images/11_cosine_similarity_raw.png)
+![11_cos_similarity_raw.png](images/11_cos_similarity_raw.png)
 
 ![13_MDS_cos_sim_raw.png](images/13_MDS_cos_sim_raw.png)
 - Multi-dimensional Scaling (MDS) on Raw decks Cosine Similarities
 
-### Cosine Similarities betw Cleaned Decks
-![Distances betw Clean Decks](images/11_cosine_similarity_clean.png)
+### Cosine Similarities betw Cleaned/Stemmed Decks
+![11_cos_similarity_clean.png](images/11_cos_similarity_clean.png)
 
 ![13_MDS_cos_sim_clean.png](images/13_MDS_cos_sim_clean.png)
 - Multi-dimensional Scaling (MDS) on Clean decks Cosine Similarities
@@ -159,19 +159,21 @@ Off-topic cards are likely present
 ## Let's Look at the Whole Corpus (the 3 decks combined)
 ![Corpus - cleaned](images/06c_fullCorpus_wordmap_after_stemming.png)
 
+--------------------------------------------------------------------------------
+## Topic Modeling with Latent Dirichlet Allocation (LDA)
+* Chose LDA, tried [NMF (Non-negative matrix factorization)](https://en.wikipedia.org/wiki/Non-negative_matrix_factorization) and [LSI (Latent semantic indexing)](https://en.wikipedia.org/wiki/Latent_semantic_analysis#Latent_semantic_indexing)
+  * "LDA yields list of salient groups of related words over a collection, with documents represented as a mixture of these groups.""
+  * LDA took longer to fit but...
+  * LDA has a pretty cool visualization tool: [pyLDAvis](https://pyldavis.readthedocs.io/en/latest/)
+* Used both TF Vectors and TF-IDF Vectors as input, after reading that TF Vectors are preferred input to LDA
+  * tf-idf is at the word level and can identify sets of words that are discriminative for documents in the collection
+  * LDA can determine co-occurrence of words in a collection and can be analyzed to discern topics
+  * Radim, who contributes to Gensim's LDA, says this: `" LDA -- in theory, it only works over plain bag-of-words (integers). The theory doesn't make sense over floats. But the floats/integers distinction makes no difference to the LDA implementation in gensim, so I tried it over tfidf too, and personally found the tfidf results better :) But I didn't do any rigorous evaluation of this, so ymmv; best if you see how it behaves on your own data. "`
 
 --------------------------------------------------------------------------------
-
-
-## Explore NLP strategies to allow for meaningful clustering
-    * Stem, Lemmatize, Stopwords
-    * Count Vector
-    * TF-IDF Vector
-
---------------------------------------------------------------------------------
-## Use Topic Modeling to analyze topics within a single subject corpus.
-    * Determine if discerned topics are sensible
-
+### LDA on the Full Corpus Separates Out the Three Types Rather Definitively
+[Interactive Link for LDA on Term Freq Matrix of Full Corpus](all_count_vect_topics.html)
+![LDA on Term Freq Matrix of Full Corpus](images/all_count_vect_topics.png)
 --------------------------------------------------------------------------------
 ## Apply same Topic modeling to the full pool of cards
     * Provide list of salient and relevant words for each topic.

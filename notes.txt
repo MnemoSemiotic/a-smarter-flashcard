@@ -95,9 +95,12 @@
     - Add headers to html files
     - Put ReadME Together
 
+NEXT: make data cleaning pipeline visual
 
 
 Next Steps:
+  - Explore possibility of replacing some latex tags with meaningful words, especially for less common mathematical operations
+
   - Write methods for
     - cosine distance between any two given records
     - display topic distribution
