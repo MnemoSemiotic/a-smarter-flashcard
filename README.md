@@ -119,11 +119,46 @@ Off-topic cards are likely present
 --------------------------------------------------------------------------------
 ### Biology Cards Cleaned (sort of):
 ![Biology wordmap - cleaned](images/06b_biology_wordmap_after_stemming.png)
-
+- There are some artifacts from javascript here that will need to be cleaned up eventually.
+  - But, what if we have flashcards about javascript???
+- We will see these erroneous words (`amask`, `display`) reappear during topic modeling.
 --------------------------------------------------------------------------------
-### History Cards Cleaned (sort of):
+### History Cards Cleaned:
 ![History wordmap - cleaned](images/06b_history_wordmap_after_stemming.png)
 --------------------------------------------------------------------------------
+## How do the 3 decks compare to each other?
+### Some Selected Word Counts:
+![Selected Words](images/08_some_random_word_counts.png)
+--------------------------------------------------------------------------------
+### Euclidean Distances betw Raw Decks
+![Distances betw Raw Decks](images/10_euclidian_distance_raw.png)
+![eucl_distance_raw.png](images/12_MDS_eucl_distance_raw.png)
+- Multi-dimensional Scaling (MDS) on Raw decks Euclidean distances
+
+### Euclidean Distances betw Cleaned Decks
+![Distances betw Clean Decks](images/10_euclidian_distance_clean.png)
+![eucl_distance_clean.png](images/13_MDS_eucl_distance_clean.png)
+- Multi-dimensional Scaling (MDS) on Cleaned/Stemmed decks Euclidean distances
+
+--------------------------------------------------------------------------------
+### Cosine Similarities betw Raw Decks
+![Distances betw Raw Decks](images/11_cosine_similarity_raw.png)
+![13_MDS_cos_sim_raw.png](images/13_MDS_cos_sim_raw.png)
+- Multi-dimensional Scaling (MDS) on Raw decks Cosine Similarities
+
+### Cosine Similarities betw Cleaned Decks
+![Distances betw Clean Decks](images/11_cosine_similarity_clean.png)
+![13_MDS_cos_sim_clean.png](images/13_MDS_cos_sim_clean.png)
+- Multi-dimensional Scaling (MDS) on Clean decks Cosine Similarities
+--------------------------------------------------------------------------------
+
+## Let's Look at the Whole Corpus (the 3 decks combined)
+![Corpus - cleaned](images/06c_fullCorpus_wordmap_after_stemming.png)
+
+
+--------------------------------------------------------------------------------
+
+
 ## Explore NLP strategies to allow for meaningful clustering
     * Stem, Lemmatize, Stopwords
     * Count Vector
