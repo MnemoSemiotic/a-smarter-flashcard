@@ -55,12 +55,43 @@
       - history deck
     - adding function to remove anki closure snippets (c1::, c2::, etc)
     - editing README to reflect discussion with Eliot
-
-
-NEXT: most frequent word stems
-
-NEXT: make pie charts for some of the rows for a given model
-
-NEXT: implement Word2Vec and run same models
+    - making graphic to show simple application model
+    - EDA on new data
+      - getting some word counts for the different documents
+        - output image
+        - keep in mind this is raw, no stemming, html, etc is still in the data
+      - getting Euclidean distances
+        - output image
+        - this is raw, no stemming, html/latex still in data
+      - getting Cosine Similarity
+        - output image
+        - this is raw, no stemming, html/latex still in data
+      - MultiDimensional Scaling
+        - output plot for Euclidean distance
+        - output plot for cosine similarity
+  AFTERNOON
+    - Decided to output cleaned data to new text file on every run
+      - this mimics eventually having data in postgres
+    - EDA on cleaned new data (only on Count vectors, not on tf-idf yet)
+      - Euclidean distance output is not interpretable in this space
+      - Cosine Similarity increases across the cleaned corpora
+        - makes sense since stemming and cleaning data removes many unique words, and, since at this point the 3 corpora are being compared as if they are three documents, cosine similarity would increase
+      - Output word maps for each corpora
+        - Biology is showing some javascript that will need to be cleaned out
+          - indicated this with red circles on wordmap
+        - History looks really good, this is probably due to the lack of customizations in the cards themselves.
+    - Attempting to use pyLDAvis tool
+      - build full corpora
+        - output wordmap
+          - note there are still some javascript words that need to be cleaned
+      - run pyLDAvis within Jupyter notebook on full corpus
+        - on the full corpora, the topics separate into 3 distinct categories with a lot of distance
+        - generated two html files which I will attempt to embed within the markdown
 
 THEN: visualize output of models and dimension reduction
+
+Topic Coherence: https://rare-technologies.com/what-is-topic-coherence/
+  - https://nbviewer.jupyter.org/github/dsquareindia/gensim/blob/280375fe14adea67ce6384ba7eabf362b05e6029/docs/notebooks/topic_coherence_tutorial.ipynb#topic=0&lambda=1&term=
+
+DECISIONS:
+  - although I wanted to implement Word2Vec and do k-means, I decided in the interest of time to topic model using LDA
