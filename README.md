@@ -1,18 +1,24 @@
-[Google Presentation](https://docs.google.com/presentation/d/1382PGj1Ljha43d8BnQAKAfSGJM_bGphilbakYj5520A/edit?usp=sharing)
+
 
 # In Search of a Smarter Flashcard
-## Discerning Topics, Pedagogical Implications
+## Part 1: Discerning Topics, Pedagogical Implications
 #### Tovio Roberts, Capstone 2 @Galvanize
 
 
 ### **GOALS:**
 - Clean flash card pool in a way that can be generalized to new card content
-- Topic Model in a ‘reasonable’ way so as to enable simple similarity selection in an application
+- Topic Model so as to enable simple similarity selection in an application
 - Discuss discerning strong and weak subjects for a user
   - How to deliver the most "helpful" study materials
   - Associative Database --> Extrapolative Learning
+--------------------------------------------------------------------------------
+## **Questions:**
+1. How can we clean and cluster/discern topics in a pool of flash cards in a ‘reasonable’ way through use of NLP techniques?
+2. How will clustering generalize to a new pool of flash cards.
+3. What is an effective structure to discern strong and weak subjects for an individual who regularly reviews flash cards.
+--------------------------------------------------------------------------------
 
-### **DATA**
+## **DATA**
 3 collections of ~12,000 each, flash cards, ~36,000 total.  These are divided into 3 general categories:
 - Data Science
 - Biology
@@ -25,6 +31,7 @@ The data sets are compiled from three sources:
 - Quizlet
 - My own collection
 
+--------------------------------------------------------------------------------
 ### **PROJECT PROGRESSION Minimum Viable Product:**
 1. Create data cleaning pipeline.
     * Strip html from cards
@@ -39,7 +46,7 @@ The data sets are compiled from three sources:
 4. Apply same Topic modeling to the full pool of cards
     * Provide list of salient and relevant words for each topic.
 
-
+--------------------------------------------------------------------------------
 ### *Improvement 1: Provide a simple API for flashcards*
 1. Build topic distribution table when new cards are added
 2. Retrieve flashcard
@@ -55,7 +62,23 @@ The data sets are compiled from three sources:
 2. Use similarity metrics to discern “Weak” and “Strong” topics, based on card review successes.
 3. Deliver review cards as a function of spaced repetition, strength, and similarity.
 
+--------------------------------------------------------------------------------
 
+## Create data cleaning pipeline.
+    * Strip html from cards
+    * Standardize, modify or ignore formulas that are not consistent across cards.
+    * Modify entries that lead to erroneous topics.
 
 --------------------------------------------------------------------------------
-## Topic Modeling using TF Vector
+## Explore NLP strategies to allow for meaningful clustering
+    * Stem, Lemmatize, Stopwords
+    * Count Vector
+    * TF-IDF Vector
+
+--------------------------------------------------------------------------------
+## Use Topic Modeling to analyze topics within a single subject corpus.
+    * Determine if discerned topics are sensible
+
+--------------------------------------------------------------------------------
+## Apply same Topic modeling to the full pool of cards
+    * Provide list of salient and relevant words for each topic.
