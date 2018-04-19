@@ -385,7 +385,7 @@ if __name__ == '__main__':
     print_topics(lda_model, vectorizer)
     print("=" * 20)
 
-    print("NMF Model:")
+    print("NMF (Non-negative matrix factorization) Model:")
     print_topics(nmf_model, vectorizer)
     print("=" * 20)
 

@@ -43,9 +43,10 @@ def create_wordcloud(text):
     plt.savefig('wordmap_temp.png', dpi=dpi)
 
 if __name__ == '__main__':
-
-    d = path.dirname('/Users/tbot/Dropbox/galvanize/a-smarter-flashcard/data/')
-
-    # Read the whole text.
-    text = open(path.join(d, 'ds_flashcards_2.txt')).read()
-    create_wordcloud(text)
+    pass
+    #
+    # d = path.dirname('/Users/tbot/Dropbox/galvanize/a-smarter-flashcard/data/')
+    #
+    # # Read the whole text.
+    # text = open(path.join(d, 'ds_flashcards_2.txt')).read()
+    # create_wordcloud(text)

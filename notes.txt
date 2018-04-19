@@ -88,11 +88,32 @@
         - on the full corpora, the topics separate into 3 distinct categories with a lot of distance
         - generated two html files which I will attempt to embed within the markdown
       - run pyLDAvis on individual 3 separate datasets
+        - output html files for all topic models for datasets (tf and tf-idf)
 
-THEN: visualize output of models and dimension reduction
+2018_04_18
+  MORNING
+    - Add headers to html files
+    - Put ReadME Together
 
-Topic Coherence: https://rare-technologies.com/what-is-topic-coherence/
-  - https://nbviewer.jupyter.org/github/dsquareindia/gensim/blob/280375fe14adea67ce6384ba7eabf362b05e6029/docs/notebooks/topic_coherence_tutorial.ipynb#topic=0&lambda=1&term=
 
-DECISIONS:
-  - although I wanted to implement Word2Vec and do k-means, I decided in the interest of time to topic model using LDA
+
+Next Steps:
+  - Write methods for
+    - cosine distance between any two given records
+    - display topic distribution
+      - euclidean distance between any two record's distributions
+
+  - Use Topic Coherence methods to choose best topic modeling methods, hyperparameters:
+    - (may be easier to move to Gensim for their Topic Coherence pipeline)
+    - (LSA (Latent Semantic Indexing), NMF (Non-negative matrix factorization), LDA (Latent Dirichlet Allocation))
+    - Optimal number of topics
+    - Number of iterations
+    - https://rare-technologies.com/what-is-topic-coherence/
+      - https://nbviewer.jupyter.org/github/dsquareindia/gensim/blob/280375fe14adea67ce6384ba7eabf362b05e6029/docs/notebooks/topic_coherence_tutorial.ipynb#topic=0&lambda=1&term=
+
+  - Compare topic modeling insights to results of Word2Vec with k-means/LSH (Locality-sensitive hashing), I decided in the interest of time to topic model using LDA
+
+  - Look into Doc2Vec as clustering model
+    - Word Mover's Distance as a metric
+
+  - Create a term-topic matrix as in [Chang, et al](http://vis.stanford.edu/files/2012-Termite-AVI.pdf)
