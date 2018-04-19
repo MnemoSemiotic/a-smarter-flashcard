@@ -132,22 +132,26 @@ Off-topic cards are likely present
 --------------------------------------------------------------------------------
 ### Euclidean Distances betw Raw Decks
 ![Distances betw Raw Decks](images/10_euclidian_distance_raw.png)
+
 ![eucl_distance_raw.png](images/12_MDS_eucl_distance_raw.png)
 - Multi-dimensional Scaling (MDS) on Raw decks Euclidean distances
 
 ### Euclidean Distances betw Cleaned Decks
 ![Distances betw Clean Decks](images/10_euclidian_distance_clean.png)
-![eucl_distance_clean.png](images/13_MDS_eucl_distance_clean.png)
+
+![eucl_distance_clean.png](images/12_MDS_eucl_distance_clean.png)
 - Multi-dimensional Scaling (MDS) on Cleaned/Stemmed decks Euclidean distances
 
 --------------------------------------------------------------------------------
 ### Cosine Similarities betw Raw Decks
 ![Distances betw Raw Decks](images/11_cosine_similarity_raw.png)
+
 ![13_MDS_cos_sim_raw.png](images/13_MDS_cos_sim_raw.png)
 - Multi-dimensional Scaling (MDS) on Raw decks Cosine Similarities
 
 ### Cosine Similarities betw Cleaned Decks
 ![Distances betw Clean Decks](images/11_cosine_similarity_clean.png)
+
 ![13_MDS_cos_sim_clean.png](images/13_MDS_cos_sim_clean.png)
 - Multi-dimensional Scaling (MDS) on Clean decks Cosine Similarities
 --------------------------------------------------------------------------------
