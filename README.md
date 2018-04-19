@@ -112,7 +112,17 @@ Off-topic cards are likely present
 ## Cleaning...
 ![Data Science wordmap - Cleaning](images/data_cleaning.gif)
 
+--------------------------------------------------------------------------------
+### Data Science Cards Cleaned:
+![Data Science wordmap - cleaned](images/06_datascience_wordmap_after_stemming.png)
 
+--------------------------------------------------------------------------------
+### Biology Cards Cleaned (sort of):
+![Biology wordmap - cleaned](images/06b_biology_wordmap_after_stemming.png)
+
+--------------------------------------------------------------------------------
+### History Cards Cleaned (sort of):
+![History wordmap - cleaned](images/06b_history_wordmap_after_stemming.png)
 --------------------------------------------------------------------------------
 ## Explore NLP strategies to allow for meaningful clustering
     * Stem, Lemmatize, Stopwords
