@@ -17,8 +17,18 @@
 2. How will clustering generalize to a new pool of flash cards.
 3. What is an effective structure to discern strong and weak subjects for an individual who regularly reviews flash cards.
 --------------------------------------------------------------------------------
-
-## **DATA**
+## **Problem Context**
+- Learning is non-linear, extrapolative and diverse
+- Traditional Education tends to be linear, grade-focused and "forgetful"
+- Discerning underlying patterns of topics in a corpus of educational materials (such as flashcards, assignments) has the potential to facilitate extrapolative study
+--------------------------------------------------------------------------------
+## **Inspirations**
+- [Anki](http://ankisrs.net) - Spaced-Repetition flash card program
+- [PiggyDB](https://piggydb.net/) - associative, tag-based database for study and extrapolation
+- [KhanAcademy](http://khanacademy.org) - Exploratory, non-grade-based educational model
+- [Moonwalking with Einstein](https://joshuafoer.com/) by Joshua Forrer - Memory Palaces/Method of Locii
+--------------------------------------------------------------------------------
+## **The DATA:**
 3 collections of ~12,000 each, flash cards, ~36,000 total.  These are divided into 3 general categories:
 - Data Science
 - Biology
@@ -29,8 +39,28 @@
 The data sets are compiled from three sources:
 - AnkiWeb
 - Quizlet
-- My own collection
+- My collection
+--------------------------------------------------------------------------------
+## **The Data:** 1 observation == 1 Flash Card
+- Front:
+  - Can be in the form of a question, an Imperative (e.g., “Describe the Bernoulli Distribution:”)
+  - May contain the majority of information from the observation as in the case of giving a definition and requesting the corresponding term.
+    - Important to consider when later attempting to train an NN to write questions corresponding to answers.
 
+- Back:
+  - Effectively the same as the front.
+
+--------------------------------------------------------------------------------
+## **The Data:** Cleaning
+- Front and Back may contain images, formulas, inconsistent vocabulary
+Off-topic cards are likely present
+  - Formulas have variety of representations
+  - Images must be stripped
+
+- With that in mind, let's consider a data model...
+--------------------------------------------------------------------------------
+## **The Data:** Simple MVC
+![Simple MVC Concept](images/07_simple_app_design.png)
 --------------------------------------------------------------------------------
 ### **PROJECT PROGRESSION Minimum Viable Product:**
 1. Create data cleaning pipeline.
