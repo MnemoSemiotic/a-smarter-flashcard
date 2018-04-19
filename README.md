@@ -4,7 +4,38 @@
 ## Part 1: Discerning Topics, Pedagogical Implications
 #### Tovio Roberts, Capstone 2 @Galvanize
 
+--------------------------------------------------------------------------------
+### **PROJECT PROGRESSION Minimum Viable Product:**
+1. Create data cleaning pipeline.
+    * Strip html from cards
+    * Standardize, modify or ignore formulas that are not consistent across cards.
+    * Modify entries that lead to erroneous topics.
+2. Explore NLP strategies to allow for meaningful clustering
+    * Stem, Lemmatize, Stopwords
+    * Count Vector
+    * TF-IDF Vector
+3. Use Topic Modeling to analyze topics within a single subject corpus.
+    * Determine if discerned topics are sensible
+4. Apply same Topic modeling to the full pool of cards
+    * Provide list of salient and relevant words for each topic.
 
+--------------------------------------------------------------------------------
+### *Improvement 1: Provide a simple API for flashcards*
+1. Build topic distribution table when new cards are added
+2. Retrieve flashcard
+3. Update success table for flashcard user
+
+### *Improvement 2: Provide an Interface for Card Review*
+1. Swipe Left/Swipe Right simple front end.
+2. Update success/fail.
+3. Discern “Strong” and “Weak” topics.
+
+### *Improvement 3: Smart Flashcard Delivery*
+1. Incorporate Spaced Repetition and randomness settings into reviews.
+2. Use similarity metrics to discern “Weak” and “Strong” topics, based on card review successes.
+3. Deliver review cards as a function of spaced repetition, strength, and similarity.
+
+--------------------------------------------------------------------------------
 ### **GOALS:**
 - Clean flash card pool in a way that can be generalized to new card content
 - Topic Model so as to enable simple similarity selection in an application
@@ -14,7 +45,7 @@
 --------------------------------------------------------------------------------
 ## **Questions:**
 1. How can we clean and cluster/discern topics in a pool of flash cards in a ‘reasonable’ way through use of NLP techniques?
-2. How will clustering generalize to a new pool of flash cards.
+2. How will clustering/topic modeling generalize to a new pool of flash cards.
 3. What is an effective structure to discern strong and weak subjects for an individual who regularly reviews flash cards.
 --------------------------------------------------------------------------------
 ## **Problem Context**
@@ -59,45 +90,28 @@ Off-topic cards are likely present
 
 - With that in mind, let's consider a data model...
 --------------------------------------------------------------------------------
-## **The Data:** Simple MVC
+## **The Data:** Working toward Simple MVC
 ![Simple MVC Concept](images/07_simple_app_design.png)
+- Flash Card Pool: all flash cards in original form
+  - fields may contain latex, html
+- Topic Distribution Table:
+  - If Using LDA, contains a mixture of topic probabilities for each card
+- Successes:
+  - Integer count of successes/misses, for each card
+  - For [Spaced Repetition](https://en.wikipedia.org/wiki/Spaced_repetition), records last time viewed
 --------------------------------------------------------------------------------
-### **PROJECT PROGRESSION Minimum Viable Product:**
-1. Create data cleaning pipeline.
-    * Strip html from cards
-    * Standardize, modify or ignore formulas that are not consistent across cards.
-    * Modify entries that lead to erroneous topics.
-2. Explore NLP strategies to allow for meaningful clustering
-    * Stem, Lemmatize, Stopwords
-    * Count Vector
-    * TF-IDF Vector
-3. Use Topic Modeling to analyze topics within a single subject corpus.
-    * Determine if discerned topics are sensible
-4. Apply same Topic modeling to the full pool of cards
-    * Provide list of salient and relevant words for each topic.
+## **The Data:** What it looks like RAW
+![Raw Data Science wordmap](images/00_wordmap_raw_data.png)
+- This is the raw data from the Data Science FlashCard deck
 
+#### We Need to...
+* Strip html from cards
+* Standardize, modify or ignore formulas that are not consistent across cards.
+* Modify entries that lead to erroneous topics.
 --------------------------------------------------------------------------------
-### *Improvement 1: Provide a simple API for flashcards*
-1. Build topic distribution table when new cards are added
-2. Retrieve flashcard
-3. Update success table for flashcard user
+## Cleaning...
+![Data Science wordmap - Cleaning](images/data_cleaning.gif)
 
-### *Improvement 2: Provide an Interface for Card Review*
-1. Swipe Left/Swipe Right simple front end.
-2. Update success/fail.
-3. Discern “Strong” and “Weak” topics.
-
-### *Improvement 3: Smart Flashcard Delivery*
-1. Incorporate Spaced Repetition and randomness settings into reviews.
-2. Use similarity metrics to discern “Weak” and “Strong” topics, based on card review successes.
-3. Deliver review cards as a function of spaced repetition, strength, and similarity.
-
---------------------------------------------------------------------------------
-
-## Create data cleaning pipeline.
-    * Strip html from cards
-    * Standardize, modify or ignore formulas that are not consistent across cards.
-    * Modify entries that lead to erroneous topics.
 
 --------------------------------------------------------------------------------
 ## Explore NLP strategies to allow for meaningful clustering
