@@ -34,10 +34,10 @@ The data sets are compiled from three sources:
     * Stem, Lemmatize, Stopwords
     * Count Vector
     * TF-IDF Vector
-3. Use Clustering to analyze topics within a single subject corpus.
-    * Provide list of “quintessential” words for each topic, most-common words per category.
-    * User chosen categories become target labels.
+3. Use Topic Modeling to analyze topics within a single subject corpus.
+    * Determine if discerned topics are sensible
 4. Apply same Topic modeling to the full pool of cards
+    * Provide list of salient and relevant words for each topic.
 
 
 ### *Improvement 1: Provide a simple API for flashcards*

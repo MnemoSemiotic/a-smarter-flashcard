@@ -87,6 +87,7 @@
       - run pyLDAvis within Jupyter notebook on full corpus
         - on the full corpora, the topics separate into 3 distinct categories with a lot of distance
         - generated two html files which I will attempt to embed within the markdown
+      - run pyLDAvis on individual 3 separate datasets
 
 THEN: visualize output of models and dimension reduction
 
