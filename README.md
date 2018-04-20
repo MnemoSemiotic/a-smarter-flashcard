@@ -9,7 +9,12 @@
 1. How can we clean and cluster/discern topics in a pool of flash cards in a ‘reasonable’ way through use of NLP techniques?
 2. How will clustering/topic modeling generalize to a new pool of flash cards.
 3. What is an effective structure to discern strong and weak subjects for an individual who regularly reviews flash cards.
-
+--------------------------------------------------------------------------------
+## **Technologies Used**
+  * Python, sklearn
+  * Sklearn's Latent Dirichlet Allocation
+  * WordCloud
+  * pyLDAvis
 --------------------------------------------------------------------------------
 ### **PROJECT PROGRESSION Minimum Viable Product:**
 1. Create data cleaning pipeline.
@@ -90,17 +95,6 @@ Off-topic cards are likely present
   - Formulas have variety of representations
   - Images must be stripped
 
-- With that in mind, let's consider a data model...
---------------------------------------------------------------------------------
-## **The Data:** Working toward Simple MVC
-![07_simple_app_design.png](images/07_simple_app_design.png)
-- Flash Card Pool: all flash cards in original form
-  - fields may contain latex, html
-- Topic Distribution Table:
-  - If Using LDA, contains a mixture of topic probabilities for each card
-- Successes:
-  - Integer count of successes/misses, for each card
-  - For [Spaced Repetition](https://en.wikipedia.org/wiki/Spaced_repetition), records last time viewed
 --------------------------------------------------------------------------------
 ## **The Data:** What it looks like RAW
 ![00_wordmap_raw_data.png](images/00_wordmap_raw_data.png)
@@ -171,6 +165,17 @@ Off-topic cards are likely present
   * tf-idf is at the word level and can identify sets of words that are discriminative for documents in the collection
   * LDA can determine co-occurrence of words in a collection and can be analyzed to discern topics
   * Radim, who contributes to Gensim's LDA, says this: `" LDA -- in theory, it only works over plain bag-of-words (integers). The theory doesn't make sense over floats. But the floats/integers distinction makes no difference to the LDA implementation in gensim, so I tried it over tfidf too, and personally found the tfidf results better :) But I didn't do any rigorous evaluation of this, so ymmv; best if you see how it behaves on your own data. "`
+
+--------------------------------------------------------------------------------
+## **Quick Aside:** Working toward Simple MVC
+![07_simple_app_design.png](images/07_simple_app_design.png)
+- Flash Card Pool: all flash cards in original form
+  - fields may contain latex, html
+- Topic Distribution Table:
+  - If Using LDA, contains a mixture of topic probabilities for each card
+- Successes:
+  - Integer count of successes/misses, for each card
+  - For [Spaced Repetition](https://en.wikipedia.org/wiki/Spaced_repetition), records last time viewed
 
 --------------------------------------------------------------------------------
 ### LDA on the Full Corpus Separates Out the Three Types Rather Definitively
