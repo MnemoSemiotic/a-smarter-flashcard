@@ -329,6 +329,38 @@ Off-topic cards are likely present
 <br />
 
 --------------------------------------------------------------------------------
+### LDA Metaphor
+* Suppose you want to figure out people's interests (topics) in a city based on where they hang out.
+
+* Go around town and note people (words) hanging out at different places.
+
+* Pick a number K of the most important interest categories people fall into
+
+* Guess as why you see people where you see them, ie "a person is hanging out at the park because they are interested in Interest X. The same person might be seen at a coffee shop because they have interest Y, and people with interest Y like to hang out at the coffee shop."
+
+* The random guesses are very likely to be wrong, to improve them:
+  * **Loop through each place and person over and over again**
+  1. Pick a place and a person
+  2. Ask why is person i likely to be at place j?
+    * Likely because other people at place j were drawn there by the same interests.
+    * The more people with interests in X there are at the park and the stronger person i is associated with interest X (at all the other places she goes to), the more likely it is that person i is at the park because of interest X.
+  3. Make a new guess as to why person i is at the mall, choosing an interest with some probability according to how likely you think it is.
+
+* The guesses will get better and better
+  - Coffee snobs at the coffee shop
+  - Skaters at the skate park
+  - People who like to smell dog poop at the park
+
+* We can start thinking that it's likely that person i is at the park because they like smelling dog poop (or they like that weird bro-ball game with the trampoline).
+  * We can start generalizing and guessing that other people are at the park for similar reasons.
+  * At some point, we decide we've arrived at a good modeling of people's interests based on where they hang out, as well as likely interests of people who hang out a specific place.
+  * We can count people in a category to see how many people have a particular interest
+  * We can interpret the category based on the attributes of a person
+
+* For each PLACE and interest CATEGORY, compute the proportions of people at PLACE because of CATEGORY to get a representation of PLACE.
+  * e.g., the people who hang out at the park consist of 10% dog-poop-smell-lovers, 50% flow-artists, 10% drone-flyers, and 30% bro-ball-players.
+
+--------------------------------------------------------------------------------
 ## Inputs to the LDA Model
 * Word 1-grams, due to increased dimensions
 * Used both TF Matrix and TF-IDF Matrix as input, after reading that TF Matrices are the preferred input to LDA
@@ -415,6 +447,7 @@ Off-topic cards are likely present
 
 -------------------------------------------------------------------------------
 ## **Insights:**
+* Just at the beginning
 * The three subcorpora separated well... a little too well
   * What underlying associations will more topics elicit?
 * Cleaning data is time-consuming
