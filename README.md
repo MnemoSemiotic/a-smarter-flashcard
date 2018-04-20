@@ -105,10 +105,15 @@ Off-topic cards are likely present
 * Standardize, modify or ignore formulas that are not consistent across cards.
 * Modify entries that lead to erroneous topics.
 --------------------------------------------------------------------------------
-## Cleaning...
+## **Cleaning...**
 ![data_cleaning.gif](images/data_cleaning.gif)
 
 --------------------------------------------------------------------------------
+### A given Row, after cleaning
+* BEFORE:  'Recommended approach when designing a machine learning system [no answer]:<br />- Start with a simple algorithm that you can implement as quickly as possible (in one or a few days <u>at most</u>). Implement it and test it on your cross-validation data. <span style="font-style:italic; color:#acacac;">This initial implementation of your algorithm is CRITICAL and a very powerful tool to know where to go further.</span><br />- Plot learning curves to decide if more data, more features, etc. are likely to help.<br />- Error analysis: Manually examine the examples (in cross-validation set) that your algorithm made errors on. See if you spot any systematic trend in what type of examples it is making errors on.<br /><br /><span style="font-weight:600; color:#0000ff;"> (In summary: avoid premature optimization and prefer profiling on a quick and dirty implementation and then try and test quickly if a solution works)</span>'
+* AFTER:  'recommend approach when design a machin learn system [no answer]: - start with a simpl algorithm that you can implement as quick as possibl (in one or a few day at most ). implement it and test it on your cross-valid data. this initi implement of your algorithm is critic and a veri power tool to know where to go further. - plot learn curv to decid if more data, more features, etc. are like to help. - error analysis: manual examin the exampl (in cross-valid set) that your algorithm made error on. see if you spot ani systemat trend in what type of exampl it is make error on. (in summary: avoid prematur optim and prefer profil on a quick and dirti implement and then tri and test quick if a solut works) '
+--------------------------------------------------------------------------------
+
 ### Data Science Cards Cleaned and Stemmed:
 ![06_datascience_wordmap_after_stemming.png](images/06_datascience_wordmap_after_stemming.png)
 
@@ -122,40 +127,15 @@ Off-topic cards are likely present
 ### History Cards Cleaned and Stemmed:
 ![06b_history_wordmap_after_stemming.png](images/06b_history_wordmap_after_stemming.png)
 --------------------------------------------------------------------------------
-## How do the 3 decks compare to each other?
-### Some Selected Word Counts:
-![08_some_random_word_counts.png](images/08_some_random_word_counts.png)
---------------------------------------------------------------------------------
-### Euclidean Distances betw Raw Decks
-![10_euclidian_distance_raw.png](images/10_euclidian_distance_raw.png)
-
-![12_MDS_eucl_distance_raw.png](images/12_MDS_eucl_distance_raw.png)
-- Multi-dimensional Scaling (MDS) on Raw decks Euclidean distances
-
-### Euclidean Distances betw Cleaned/Stemmed Decks
-![10_euclidian_distance_clean.png](images/10_euclidian_distance_clean.png)
-
-![12_MDS_eucl_distance_clean.png](images/12_MDS_eucl_distance_clean.png)
-- Multi-dimensional Scaling (MDS) on Cleaned/Stemmed decks Euclidean distances
-
---------------------------------------------------------------------------------
-### Cosine Similarities betw Raw Decks
-![11_cos_similarity_raw.png](images/11_cos_similarity_raw.png)
-
-![13_MDS_cos_sim_raw.png](images/13_MDS_cos_sim_raw.png)
-- Multi-dimensional Scaling (MDS) on Raw decks Cosine Similarities
-
-### Cosine Similarities betw Cleaned/Stemmed Decks
-![11_cos_similarity_clean.png](images/11_cos_similarity_clean.png)
-
-![13_MDS_cos_sim_clean.png](images/13_MDS_cos_sim_clean.png)
-- Multi-dimensional Scaling (MDS) on Clean decks Cosine Similarities
---------------------------------------------------------------------------------
-
 ## Let's Look at the Whole Corpus (the 3 decks combined)
 ![Corpus - cleaned](images/06c_fullCorpus_wordmap_after_stemming.png)
 
 --------------------------------------------------------------------------------
+## How do the 3 decks compare to each other?
+### Some Selected Word Counts:
+![08_some_random_word_counts.png](images/08_some_random_word_counts.png)
+--------------------------------------------------------------------------------
+
 ## Topic Modeling with Latent Dirichlet Allocation (LDA)
 * Chose LDA, tried [NMF (Non-negative matrix factorization)](https://en.wikipedia.org/wiki/Non-negative_matrix_factorization) and [LSI (Latent semantic indexing)](https://en.wikipedia.org/wiki/Latent_semantic_analysis#Latent_semantic_indexing)
   * "LDA yields list of salient groups of related words over a collection, with documents represented as a mixture of these groups.""
