@@ -3,16 +3,17 @@
 ## Part 1: Discerning Topics, Pedagogical Implications
 #### Tovio Roberts, Capstone 2 @Galvanize
 
-```
-
-
-
-
-
-
-
-
-```
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
 --------------------------------------------------------------------------------
 ## **Questions:**
 1. How can we clean and cluster/discern topics in a pool of flash cards in a ‘reasonable’ way through use of NLP techniques?
