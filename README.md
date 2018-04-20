@@ -14,7 +14,7 @@
   * Python, sklearn
   * Sklearn's Latent Dirichlet Allocation
   * WordCloud
-  * pyLDAvis
+  * [pyLDAvis](https://pyldavis.readthedocs.io/en/latest/)
 --------------------------------------------------------------------------------
 ### **PROJECT PROGRESSION Minimum Viable Product:**
 1. Create data cleaning pipeline.
@@ -161,10 +161,15 @@ Off-topic cards are likely present
   * "LDA yields list of salient groups of related words over a collection, with documents represented as a mixture of these groups.""
   * LDA took longer to fit but...
   * LDA has a pretty cool visualization tool: [pyLDAvis](https://pyldavis.readthedocs.io/en/latest/)
+
+--------------------------------------------------------------------------------
+## Inputs to the LDA Model
 * Used both TF Vectors and TF-IDF Vectors as input, after reading that TF Vectors are preferred input to LDA
+  * Radim Řehůřek, who authored Gensim, a topic modeling toolkit, says:
+    - `" LDA -- in theory, it only works over plain bag-of-words (integers). The theory doesn't make sense over floats. But the floats/integers distinction makes no difference to the LDA implementation in gensim, so I tried it over tfidf too, and personally found the tfidf results better :) But I didn't do any rigorous evaluation of this, so ymmv; best if you see how it behaves on your own data. "`
   * tf-idf is at the word level and can identify sets of words that are discriminative for documents in the collection
   * LDA can determine co-occurrence of words in a collection and can be analyzed to discern topics
-  * Radim, who contributes to Gensim's LDA, says this: `" LDA -- in theory, it only works over plain bag-of-words (integers). The theory doesn't make sense over floats. But the floats/integers distinction makes no difference to the LDA implementation in gensim, so I tried it over tfidf too, and personally found the tfidf results better :) But I didn't do any rigorous evaluation of this, so ymmv; best if you see how it behaves on your own data. "`
+
 
 --------------------------------------------------------------------------------
 ## **Quick Aside:** Working toward Simple MVC
@@ -179,8 +184,15 @@ Off-topic cards are likely present
 
 --------------------------------------------------------------------------------
 ### LDA on the Full Corpus Separates Out the Three Types Rather Definitively
-[Interactive Link for LDA on Term Freq Matrix of Full Corpus](images/all_count_vect_topics.html)
+
 ![LDA on Term Freq Matrix of Full Corpus](images/all_count_vect_topics.png)
 --------------------------------------------------------------------------------
-## Apply same Topic modeling to the full pool of cards
-    * Provide list of salient and relevant words for each topic.
+### List of Interactive Visualizations
+* [Interactive LDA on Term Freq Matrix of Full Corpus](images/all_count_vect_topics.html)
+* [Interactive LDA on TF-IDF Matrix of Full Corpus](images/all_tfidf_vect_topics.html)
+* [Interactive LDA on Term Freq Matrix of Biology Subcorpus](images/bio_count_vect_topics.html.html)
+* [Interactive LDA on TF-IDF Matrix of Biology Subcorpus](images/bio_tfidf_vect_topics.html)
+* [Interactive LDA on Term Freq Matrix of Data Science Subcorpus](images/datascience_count_vect_topics.html)
+* [Interactive LDA on TF-IDF Matrix of Data Science Subcorpus](images/datascience_tfidf_vect_topics.html)
+* [Interactive LDA on Term Freq Matrix of History Subcorpus](images/his_count_vect_topics.html)
+* [Interactive LDA on TF-IDF Matrix of History Subcorpus](images/his_tfidf_vect_topics.html)
