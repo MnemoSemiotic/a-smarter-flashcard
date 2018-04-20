@@ -95,6 +95,8 @@
     - Add headers to html files
     - Put ReadME Together
 
+NEXT: how does pyLDAvis compute distances between centroids it shows
+
 NEXT: make data cleaning pipeline visual
 
 

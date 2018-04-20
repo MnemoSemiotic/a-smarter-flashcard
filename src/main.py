@@ -102,6 +102,11 @@ if __name__ == '__main__':
     cos_sim_clean = cosine_similarity(dtm_clean)
     np.round(cos_sim_clean, 3)
 
+
+
+
+
+
     ''' Multidimensional Scaling (MDS) '''
     # two components as we're plotting points in a two-dimensional plane
     # "precomputed" because we provide a distance matrix
@@ -337,7 +342,7 @@ if __name__ == '__main__':
 
 
     '''
-    Topic Modeling
+    Trying out different Topic Modeling alg's
     '''
     NUM_TOPICS = 5
 

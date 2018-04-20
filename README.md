@@ -5,6 +5,12 @@
 #### Tovio Roberts, Capstone 2 @Galvanize
 
 --------------------------------------------------------------------------------
+## **Questions:**
+1. How can we clean and cluster/discern topics in a pool of flash cards in a ‘reasonable’ way through use of NLP techniques?
+2. How will clustering/topic modeling generalize to a new pool of flash cards.
+3. What is an effective structure to discern strong and weak subjects for an individual who regularly reviews flash cards.
+
+--------------------------------------------------------------------------------
 ### **PROJECT PROGRESSION Minimum Viable Product:**
 1. Create data cleaning pipeline.
     * Strip html from cards
@@ -43,11 +49,7 @@
   - How to deliver the most "helpful" study materials
   - Associative Database --> Extrapolative Learning
 --------------------------------------------------------------------------------
-## **Questions:**
-1. How can we clean and cluster/discern topics in a pool of flash cards in a ‘reasonable’ way through use of NLP techniques?
-2. How will clustering/topic modeling generalize to a new pool of flash cards.
-3. What is an effective structure to discern strong and weak subjects for an individual who regularly reviews flash cards.
---------------------------------------------------------------------------------
+
 ## **Problem Context**
 - Learning is non-linear, extrapolative and diverse
 - Traditional Education tends to be linear, grade-focused and "forgetful"
@@ -172,7 +174,7 @@ Off-topic cards are likely present
 
 --------------------------------------------------------------------------------
 ### LDA on the Full Corpus Separates Out the Three Types Rather Definitively
-[Interactive Link for LDA on Term Freq Matrix of Full Corpus](all_count_vect_topics.html)
+[Interactive Link for LDA on Term Freq Matrix of Full Corpus](images/all_count_vect_topics.html)
 ![LDA on Term Freq Matrix of Full Corpus](images/all_count_vect_topics.png)
 --------------------------------------------------------------------------------
 ## Apply same Topic modeling to the full pool of cards
