@@ -6,19 +6,12 @@
 <br />
 <br />
 <br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+
 
 --------------------------------------------------------------------------------
 ## **Questions:**
 1. How can we clean and discern topics in a pool of flash cards in a ‘reasonable’ way through use of NLP techniques?
-2. How will topic modeling generalize to a new pool of flash cards.
+2. How will the topic model generalize to a new pool of flash cards.
 3. What is an effective structure to discern strong and weak subjects for an individual who regularly reviews flash cards.
 <br />
 <br />
@@ -88,13 +81,6 @@
 <br />
 <br />
 <br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
 
 --------------------------------------------------------------------------------
 
@@ -157,7 +143,15 @@ The data sets are compiled from three sources:
 <br />
 <br />
 
+
 --------------------------------------------------------------------------------
+## **The Data:** Cleaning
+- Front and Back may contain images, formulas, inconsistent vocabulary
+Off-topic cards are likely present
+  - Formulas have variety of representations
+  - Images must be stripped
+  - HTML, LateX, and Javascript 
+
 ## **The Data:** 1 observation == 1 Flash Card
 - Front:
   - Can be in the form of a question, an Imperative (e.g., “Describe the Bernoulli Distribution:”)
@@ -166,26 +160,6 @@ The data sets are compiled from three sources:
 
 - Back:
   - Effectively the same as the front.
-
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-
---------------------------------------------------------------------------------
-## **The Data:** Cleaning
-- Front and Back may contain images, formulas, inconsistent vocabulary
-Off-topic cards are likely present
-  - Formulas have variety of representations
-  - Images must be stripped
-
 <br />
 <br />
 <br />
