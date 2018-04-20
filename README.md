@@ -17,8 +17,8 @@
 
 --------------------------------------------------------------------------------
 ## **Questions:**
-1. How can we clean and cluster/discern topics in a pool of flash cards in a ‘reasonable’ way through use of NLP techniques?
-2. How will clustering/topic modeling generalize to a new pool of flash cards.
+1. How can we clean and discern topics in a pool of flash cards in a ‘reasonable’ way through use of NLP techniques?
+2. How will topic modeling generalize to a new pool of flash cards.
 3. What is an effective structure to discern strong and weak subjects for an individual who regularly reviews flash cards.
 <br />
 <br />
@@ -35,8 +35,8 @@
 --------------------------------------------------------------------------------
 ## **Technologies Used**
   * Python, sklearn
-  * Sklearn's Latent Dirichlet Allocation
-  * WordCloud
+  * [Sklearn's Latent Dirichlet Allocation](http://scikit-learn.org/stable/modules/generated/sklearn.decomposition.LatentDirichletAllocation.html)
+  * [WordCloud](https://github.com/amueller/word_cloud)
   * [pyLDAvis](https://pyldavis.readthedocs.io/en/latest/)
 <br />
 <br />
@@ -80,7 +80,7 @@
 --------------------------------------------------------------------------------
 ### **GOALS:**
 - Clean flash card pool in a way that can be generalized to new card content
-- Topic Model so as to enable simple similarity selection in an application
+- Topic Model so as to enable simple similarity selection in a future application
 - Discuss discerning strong and weak subjects for a user
   - How to deliver the most "helpful" study materials
   - Associative Database --> Extrapolative Learning
@@ -206,7 +206,7 @@ Off-topic cards are likely present
 #### We Need to...
 * Strip html from cards
 * Standardize, modify or ignore formulas that are not consistent across cards.
-* Modify entries that lead to erroneous topics.
+* Modify entries that may lead to erroneous topics.
 <br />
 <br />
 <br />
@@ -416,14 +416,14 @@ Off-topic cards are likely present
 
 --------------------------------------------------------------------------------
 ### List of Interactive Visualizations
-* [Interactive LDA on Term Freq Matrix of Full Corpus](images/all_count_vect_topics.html)
-* [Interactive LDA on TF-IDF Matrix of Full Corpus](images/all_tfidf_vect_topics.html)
-* [Interactive LDA on Term Freq Matrix of Biology Subcorpus](images/bio_count_vect_topics.html.html)
-* [Interactive LDA on TF-IDF Matrix of Biology Subcorpus](images/bio_tfidf_vect_topics.html)
-* [Interactive LDA on Term Freq Matrix of Data Science Subcorpus](images/datascience_count_vect_topics.html)
-* [Interactive LDA on TF-IDF Matrix of Data Science Subcorpus](images/datascience_tfidf_vect_topics.html)
-* [Interactive LDA on Term Freq Matrix of History Subcorpus](images/his_count_vect_topics.html)
-* [Interactive LDA on TF-IDF Matrix of History Subcorpus](images/his_tfidf_vect_topics.html)
+* [Interactive LDA on Term Freq Matrix of Full Corpus](https://rawgit.com/clownfragment/a-smarter-flashcard/master/images/all_count_vect_topics.html)
+* [Interactive LDA on TF-IDF Matrix of Full Corpus](https://rawgit.com/clownfragment/a-smarter-flashcard/master/images/all_tfidf_vect_topics.html)
+* [Interactive LDA on Term Freq Matrix of Biology Subcorpus](https://rawgit.com/clownfragment/a-smarter-flashcard/master/images/bio_count_vect_topics.html.html)
+* [Interactive LDA on TF-IDF Matrix of Biology Subcorpus](https://rawgit.com/clownfragment/a-smarter-flashcard/master/images/bio_tfidf_vect_topics.html)
+* [Interactive LDA on Term Freq Matrix of Data Science Subcorpus](https://rawgit.com/clownfragment/a-smarter-flashcard/master/images/datascience_count_vect_topics.html)
+* [Interactive LDA on TF-IDF Matrix of Data Science Subcorpus](https://rawgit.com/clownfragment/a-smarter-flashcard/master/images/datascience_tfidf_vect_topics.html)
+* [Interactive LDA on Term Freq Matrix of History Subcorpus](https://rawgit.com/clownfragment/a-smarter-flashcard/master/images/his_count_vect_topics.html)
+* [Interactive LDA on TF-IDF Matrix of History Subcorpus](https://rawgit.com/clownfragment/a-smarter-flashcard/master/images/his_tfidf_vect_topics.html)
 
 <br />
 <br />
