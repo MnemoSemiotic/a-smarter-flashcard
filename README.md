@@ -1,9 +1,7 @@
 
-<p style="text-align: center;">
 # In Search of a Smarter Flashcard
 ## Part 1: Discerning Topics, Pedagogical Implications
 #### Tovio Roberts, Capstone 2 @Galvanize
-</p>
 
 ```
 
