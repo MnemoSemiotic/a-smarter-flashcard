@@ -4,6 +4,14 @@
 ## Part 1: Discerning Topics, Pedagogical Implications
 #### Tovio Roberts, Capstone 2 @Galvanize
 
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 --------------------------------------------------------------------------------
 ## **Questions:**
 1. How can we clean and cluster/discern topics in a pool of flash cards in a ‘reasonable’ way through use of NLP techniques?
@@ -29,22 +37,6 @@
     * Determine if discerned topics are sensible
 4. Apply same Topic modeling to the full pool of cards
     * Provide list of salient and relevant words for each topic.
-
---------------------------------------------------------------------------------
-### *Improvement 1: Provide a simple API for flashcards*
-1. Build topic distribution table when new cards are added
-2. Retrieve flashcard
-3. Update success table for flashcard user
-
-### *Improvement 2: Provide an Interface for Card Review*
-1. Swipe Left/Swipe Right simple front end.
-2. Update success/fail.
-3. Discern “Strong” and “Weak” topics.
-
-### *Improvement 3: Smart Flashcard Delivery*
-1. Incorporate Spaced Repetition and randomness settings into reviews.
-2. Use similarity metrics to discern “Weak” and “Strong” topics, based on card review successes.
-3. Deliver review cards as a function of spaced repetition, strength, and similarity.
 
 --------------------------------------------------------------------------------
 ### **GOALS:**
@@ -136,19 +128,19 @@ Off-topic cards are likely present
 --------------------------------------------------------------------------------
 
 ## Topic Modeling with Latent Dirichlet Allocation (LDA)
-* Chose LDA, tried [NMF (Non-negative matrix factorization)](https://en.wikipedia.org/wiki/Non-negative_matrix_factorization) and [LSI (Latent semantic indexing)](https://en.wikipedia.org/wiki/Latent_semantic_analysis#Latent_semantic_indexing)
-  * "LDA yields list of salient groups of related words over a collection, with documents represented as a mixture of these groups.""
-  * LDA took longer to fit but...
-  * LDA has a pretty cool visualization tool: [pyLDAvis](https://pyldavis.readthedocs.io/en/latest/)
-
+* Tried [NMF (Non-negative matrix factorization)](https://en.wikipedia.org/wiki/Non-negative_matrix_factorization) and [LSI (Latent semantic indexing)](https://en.wikipedia.org/wiki/Latent_semantic_analysis#Latent_ semantic_indexing)
+* "LDA yields list of salient groups of related words over a collection, with documents represented as a mixture of these groups."
+* LDA has a pretty cool visualization tool: [pyLDAvis](https://pyldavis.readthedocs.io/en/latest/)
+* A document is a probability distribution over topics
+* A topic is a probability over words
 --------------------------------------------------------------------------------
 ## Inputs to the LDA Model
-* Used both TF Vectors and TF-IDF Vectors as input, after reading that TF Vectors are preferred input to LDA
+* Word 1-grams, due to increased dimensions
+* Used both TF Matrix and TF-IDF Matrix as input, after reading that TF Matrices are the preferred input to LDA
   * Radim Řehůřek, who authored Gensim, a topic modeling toolkit, says:
     - `" LDA -- in theory, it only works over plain bag-of-words (integers). The theory doesn't make sense over floats. But the floats/integers distinction makes no difference to the LDA implementation in gensim, so I tried it over tfidf too, and personally found the tfidf results better :) But I didn't do any rigorous evaluation of this, so ymmv; best if you see how it behaves on your own data. "`
   * tf-idf is at the word level and can identify sets of words that are discriminative for documents in the collection
   * LDA can determine co-occurrence of words in a collection and can be analyzed to discern topics
-
 
 --------------------------------------------------------------------------------
 ## **Quick Aside:** Working toward Simple MVC
@@ -163,8 +155,10 @@ Off-topic cards are likely present
 
 --------------------------------------------------------------------------------
 ### LDA on the Full Corpus Separates Out the Three Types Rather Definitively
-
 ![LDA on Term Freq Matrix of Full Corpus](images/all_count_vect_topics.png)
+* Left side of the Plot is MDS (MultiDimensional Scaling) using PCA
+  * using Jensen-Shannon divergence as distance measurement between distributions
+* Size of Topic indicates the prevalence of a given topic, with 1 being most prevalent
 --------------------------------------------------------------------------------
 ### List of Interactive Visualizations
 * [Interactive LDA on Term Freq Matrix of Full Corpus](images/all_count_vect_topics.html)
@@ -175,3 +169,34 @@ Off-topic cards are likely present
 * [Interactive LDA on TF-IDF Matrix of Data Science Subcorpus](images/datascience_tfidf_vect_topics.html)
 * [Interactive LDA on Term Freq Matrix of History Subcorpus](images/his_count_vect_topics.html)
 * [Interactive LDA on TF-IDF Matrix of History Subcorpus](images/his_tfidf_vect_topics.html)
+
+-------------------------------------------------------------------------------
+## **Insights:**
+* The three subcorpora separated well... a little too well
+  * What underlying associations will more topics elicit?
+* Cleaning data is time-consuming
+
+-------------------------------------------------------------------------------
+## **Further Exploration:**
+* Topic coherence metrics in light of computation overhead
+  * Find optimal number of topics
+  * Optimal max iterations
+* Attempt Word2Vec clustering/topic modeling
+* Attempt Doc2Vec and Word Mover's Distance
+-------------------------------------------------------------------------------
+## **Next Steps**
+
+### *Improvement 1: Provide a simple API for flashcards*
+1. Build topic distribution table when new cards are added
+2. Retrieve flashcard by function of similarity, success and last time reviewed
+3. Update success table for flashcard user
+
+### *Improvement 2: Provide an Interface for Card Review*
+1. Swipe Left/Swipe Right simple front end.
+2. Update success/fail.
+3. Discern “Strong” and “Weak” topics.
+
+### *Improvement 3: Smart Flashcard Delivery*
+1. Incorporate Spaced Repetition and randomness settings into reviews.
+2. Use similarity metrics to discern “Weak” and “Strong” topics, based on card review successes.
+3. Deliver review cards as a function of spaced repetition, strength, and similarity.

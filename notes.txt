@@ -95,18 +95,8 @@
     - Add headers to html files
     - Put ReadME Together
 
-NEXT: how does pyLDAvis compute distances between centroids it shows
-
-NEXT: make data cleaning pipeline visual
-
-
 Next Steps:
   - Explore possibility of replacing some latex tags with meaningful words, especially for less common mathematical operations
-
-  - Write methods for
-    - cosine distance between any two given records
-    - display topic distribution
-      - euclidean distance between any two record's distributions
 
   - Use Topic Coherence methods to choose best topic modeling methods, hyperparameters:
     - (may be easier to move to Gensim for their Topic Coherence pipeline)
