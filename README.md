@@ -150,7 +150,7 @@ The data sets are compiled from three sources:
 Off-topic cards are likely present
   - Formulas have variety of representations
   - Images must be stripped
-  - HTML, LateX, and Javascript 
+  - HTML, LateX, and Javascript
 
 ## **The Data:** 1 observation == 1 Flash Card
 - Front:
@@ -314,6 +314,8 @@ Off-topic cards are likely present
 * LDA has a pretty cool visualization tool: [pyLDAvis](https://pyldavis.readthedocs.io/en/latest/)
 * A document is a probability distribution over topics
 * A topic is a probability over words
+
+#### e.g.: Row 83 = [0.35, 0.15, 0.05, 0.30, 0.15]
 <br />
 <br />
 <br />
