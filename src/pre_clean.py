@@ -1,6 +1,6 @@
 import re
 import pandas as pd
-import latex_dictionary as ltx
+import src.latex_dictionary as ltx
 from nltk.stem.snowball import SnowballStemmer
 
 
@@ -16,7 +16,7 @@ def read_cards(file_path):
 def clean_dataframe(df):
     df2 = df.copy()
 
-    df2 = df2.applymap(lambda x: stemmer(strip_latex(strip_anki(strip_html(x)))) if type(x) is str else ' ')
+    df2 = df2.applymap(lambda x: strip_javascript(stemmer(strip_latex(strip_anki(strip_html(x))))) if type(x) is str else ' ')
 
     print(df2['answer'][79])
 
@@ -46,13 +46,26 @@ def strip_latex(text):
 
     return output
 
+def strip_javascript(text):
+    cl_1 = text.replace('amask', '')
+    cl_2 = cl_1.replace('display', '')
+    cl_3 = cl_2.replace('style', '')
+    cl_4 = cl_3.replace('block', '')
+    cl_5 = cl_4.replace('form', '')
+    cl_6 = cl_5.replace('result', '')
+    cl_7 = cl_6.replace('mask', '')
+    cl_8 = cl_7.replace('bind', '')
+    cl_9 = cl_8.replace('activ', '')
+    cl_10 = cl_9.replace('toggl', '')
+    return cl_10
+
 def strip_anki(text):
     cl_1 = text.replace('c1::', '')
-    cl_2 = text.replace('c2::', '')
-    cl_3 = text.replace('c3::', '')
-    cl_4 = text.replace('c4::', '')
-    cl_5 = text.replace('c5::', '')
-    cl_6 = text.replace('c6::', '')
+    cl_2 = cl_1.replace('c2::', '')
+    cl_3 = cl_2.replace('c3::', '')
+    cl_4 = cl_3.replace('c4::', '')
+    cl_5 = cl_4.replace('c5::', '')
+    cl_6 = cl_5.replace('c6::', '')
     return cl_6
 
 def collapse_df(df):

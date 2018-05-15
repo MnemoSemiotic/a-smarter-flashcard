@@ -1,14 +1,12 @@
 import matplotlib.pyplot as plt
-
-'''
-Generating a square wordcloud from a dataframe.
-adapted from https://github.com/amueller/word_cloud/
-'''
-
+import numpy as np
+from PIL import Image
 from os import path
-from wordcloud import WordCloud
+import random
+import pandas as pd
+from wordcloud import WordCloud, STOPWORDS
 
-def create_wordcloud_from_df(df):
+def create_wordcloud_from_df(df, filename=None):
     '''
     INPUT: pandas.core.series.Series
 
@@ -18,7 +16,11 @@ def create_wordcloud_from_df(df):
     '''
 
     list_of_strings = [str(i) for i in df]
-    create_wordcloud(' '.join(list_of_strings))
+
+    if filename==None:
+        create_wordcloud(' '.join(list_of_strings))
+    else:
+        create_wordcloud_custom(' '.join(list_of_strings), filename)
 
 def create_wordcloud(text):
     '''
@@ -42,11 +44,69 @@ def create_wordcloud(text):
     # plt.show()
     plt.savefig('wordmap_temp.png', dpi=dpi)
 
+
+def grey_color_func(word, font_size, position, orientation, random_state=None, **kwargs):
+    return "hsl(0, 0%%, %d%%)" % random.randint(60, 100)
+
+
+def create_wordcloud_custom(text, image_filename):
+    """
+    Using custom colors
+    ===================
+    Using the recolor method and custom coloring functions.
+    """
+
+    d = path.dirname(__file__)
+
+    # read image from filename
+    mask = np.array(Image.open(path.join(d, image_filename)))
+
+    # movie script of "a new hope"
+    # http://www.imsdb.com/scripts/Star-Wars-A-New-Hope.html
+    # May the lawyers deem this fair use.
+
+    # tags = pd.read_csv('../data/movies/tags.csv')
+    # tags['tag'].to_csv('tags.txt')
+    # text = open(path.join(d, 'tags.txt')).read()
+
+
+    # tags = pd.read_csv('../data/movies_metadata.csv')
+    # tags['overview'].to_csv('overview.txt')
+    # text = open(path.join(d, 'overview.txt')).read()
+
+
+    # tags = pd.read_csv('../data/movies_metadata.csv')
+    # tags['genres'].to_csv('genres.txt')
+    # text = open(path.join(d, 'genres.txt')).read()
+
+
+
+    # adding stopwords
+    stopwords = set(STOPWORDS)
+    stopwords.add("int")
+    stopwords.add("ext")
+
+    wc = WordCloud(max_words=1000, mask=mask, stopwords=stopwords, margin=1, random_state=1, collocations=False).generate(text)
+    # store default colored image
+    default_colors = wc.to_array()
+    plt.title("Custom colors")
+    plt.imshow(wc.recolor(color_func=grey_color_func, random_state=3),
+               interpolation="bilinear")
+    new_filename = image_filename[:-4] + "_generated.png"
+    wc.to_file(new_filename)
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
     pass
     #
-    # d = path.dirname('/Users/tbot/Dropbox/galvanize/a-smarter-flashcard/data/')
+    d = path.dirname('/Users/tbot/Dropbox/galvanize/a-smarter-flashcard/data/')
     #
     # # Read the whole text.
-    # text = open(path.join(d, 'ds_flashcards_2.txt')).read()
+    text = open(path.join(d, 'ds_flashcards_2.txt')).read()
     # create_wordcloud(text)

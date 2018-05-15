@@ -227,7 +227,7 @@ Off-topic cards are likely present
 --------------------------------------------------------------------------------
 
 ### Data Science Cards Cleaned and Stemmed:
-![06_datascience_wordmap_after_stemming.png](images/06_datascience_wordmap_after_stemming.png)
+![brain_template_generated.png](images/brain_template_generated.png)
 
 <br />
 <br />
@@ -242,11 +242,10 @@ Off-topic cards are likely present
 <br />
 
 --------------------------------------------------------------------------------
-### Biology Cards Cleaned (sort of) and Stemmed:
-![06b_biology_wordmap_after_stemming.png](images/06b_biology_wordmap_after_stemming.png)
-- There are some artifacts from javascript here that will need to be cleaned up eventually.
-  - But, what if we have flashcards about javascript???
-- We will see these erroneous words (`amask`, `display`) reappear during topic modeling.
+### Biology Cards Cleaned and Stemmed:
+![06b_biology_wordmap_after_stemming.png](images/beaker_template_generated.png)
+- There were some artifacts from javascript snippets here that I removed manually.
+  - Keep in mind that such a decision is somewhat arbitrary and would adversely affect flash cards on the subject of javascript.
 <br />
 <br />
 <br />
@@ -261,7 +260,7 @@ Off-topic cards are likely present
 
 --------------------------------------------------------------------------------
 ### History Cards Cleaned and Stemmed:
-![06b_history_wordmap_after_stemming.png](images/06b_history_wordmap_after_stemming.png)
+![06b_history_wordmap_after_stemming.png](images/knight_template_generated.png)
 <br />
 <br />
 <br />

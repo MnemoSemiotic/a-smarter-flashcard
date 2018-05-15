@@ -153,7 +153,7 @@ if __name__ == '__main__':
     datascience_tfidf, datascience_count = models.get_vectorizers(df_datascience)
     # Export datascience cleaned
     np.savetxt(r'data/datascience_flashcards_cleaned.txt', df_datascience.values, fmt='%s')
-    wc.create_wordcloud_from_df(df_datascience)
+    wc.create_wordcloud_from_df(df_datascience, "/Users/tbot/Dropbox/galvanize/a-smarter-flashcard/images/brain_template.png")
 
     # biology cards
     data = 'data/biology_flashcards.txt'
@@ -163,7 +163,8 @@ if __name__ == '__main__':
     df_biology[79]
     np.savetxt(r'data/biology_flashcards_cleaned.txt', df_biology.values, fmt='%s')
     biology_tfidf, biology_count = models.get_vectorizers(df_biology)
-    wc.create_wordcloud_from_df(df_biology)
+
+    wc.create_wordcloud_from_df(df_biology, "/Users/tbot/Dropbox/galvanize/a-smarter-flashcard/images/beaker_template.png")
 
     # amask = df_biology.str.contains('amask')
     # len(amask[amask==True])
@@ -179,7 +180,7 @@ if __name__ == '__main__':
     df_history[79]
     np.savetxt(r'data/history_flashcards_cleaned.txt', df_history.values, fmt='%s')
     history_tfidf, history_count = models.get_vectorizers(df_history)
-    wc.create_wordcloud_from_df(df_history)
+    wc.create_wordcloud_from_df(df_history, "/Users/tbot/Dropbox/galvanize/a-smarter-flashcard/images/knight_template.png")
 
 
 
