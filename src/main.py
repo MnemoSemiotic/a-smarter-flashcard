@@ -166,12 +166,6 @@ if __name__ == '__main__':
 
     wc.create_wordcloud_from_df(df_biology, "/Users/tbot/Dropbox/galvanize/a-smarter-flashcard/images/beaker_template.png")
 
-    # amask = df_biology.str.contains('amask')
-    # len(amask[amask==True])
-    # amask[amask==True]
-    # df_biology[7000]
-    # df_collapsed[79]
-
     # history cards
     data = 'data/history_flashcards.txt'
     df_history = clean.read_cards(data)

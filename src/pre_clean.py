@@ -1,6 +1,6 @@
 import re
 import pandas as pd
-import src.latex_dictionary as ltx
+import src.replace_dictionary as replace
 from nltk.stem.snowball import SnowballStemmer
 
 
@@ -16,9 +16,7 @@ def read_cards(file_path):
 def clean_dataframe(df):
     df2 = df.copy()
 
-    df2 = df2.applymap(lambda x: strip_javascript(stemmer(strip_latex(strip_anki(strip_html(x))))) if type(x) is str else ' ')
-
-    print(df2['answer'][79])
+    df2 = df2.applymap(lambda x: stemmer(replace_with_dict(strip_html(x))) if type(x) is str else ' ')
 
     return df2
 
@@ -30,14 +28,11 @@ def strip_html(raw_html):
     '''
     cleanr = re.compile('<.*?>')
     cleantext = re.sub(cleanr, ' ', raw_html)
-    cl_1 = cleantext.replace('&nbsp;',' ')
-    cl_2 = cl_1.replace('&gt;','>')
-    cl_3 = cl_2.replace('&lt;','<')
-    cl_4 = cl_3.replace('?',' ')
-    return cl_4
 
-def strip_latex(text):
-    latex_remove = ltx.get_latex_dict()
+    return cleantext
+
+def replace_with_dict(text):
+    latex_remove = replace.get_replace_dict()
     latex_keys = latex_remove.keys()
     output = text
 
@@ -46,30 +41,7 @@ def strip_latex(text):
 
     return output
 
-def strip_javascript(text):
-    cl_1 = text.replace('amask', '')
-    cl_2 = cl_1.replace('display', '')
-    cl_3 = cl_2.replace('style', '')
-    cl_4 = cl_3.replace('block', '')
-    cl_5 = cl_4.replace('form', '')
-    cl_6 = cl_5.replace('result', '')
-    cl_7 = cl_6.replace('mask', '')
-    cl_8 = cl_7.replace('bind', '')
-    cl_9 = cl_8.replace('activ', '')
-    cl_10 = cl_9.replace('toggl', '')
-    return cl_10
-
-def strip_anki(text):
-    cl_1 = text.replace('c1::', '')
-    cl_2 = cl_1.replace('c2::', '')
-    cl_3 = cl_2.replace('c3::', '')
-    cl_4 = cl_3.replace('c4::', '')
-    cl_5 = cl_4.replace('c5::', '')
-    cl_6 = cl_5.replace('c6::', '')
-    return cl_6
-
 def collapse_df(df):
-    # df_collapsed =  df['question'] + ' ' + str(df['answer'])
     df_collapsed = df.copy()
 
     df_collapsed["record"] = df["question"].map(str) + ' ' + df["answer"].map(str)
@@ -83,11 +55,9 @@ def stemmer(text):
     return return_text
 
 
-
-''' ######################################################################## '''
 if __name__ == '__main__':
 
-    data = 'data/ds_flashcards_2.txt'
+    data = 'data/biology_flashcards.txt'
     df = read_cards(data)
 
     df_clean = clean_dataframe(df)
@@ -104,8 +74,6 @@ if __name__ == '__main__':
 
     # Create series as mask for nan values
     nulls = pd.isnull(df_collapsed)
-
-    nulls[nulls == True].index[0]
 
     df_collapsed[79]
     df['question'][79]
