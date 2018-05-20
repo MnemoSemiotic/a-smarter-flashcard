@@ -61,31 +61,6 @@ def create_wordcloud_custom(text, image_filename):
     # read image from filename
     mask = np.array(Image.open(path.join(d, image_filename)))
 
-    # movie script of "a new hope"
-    # http://www.imsdb.com/scripts/Star-Wars-A-New-Hope.html
-    # May the lawyers deem this fair use.
-
-    # tags = pd.read_csv('../data/movies/tags.csv')
-    # tags['tag'].to_csv('tags.txt')
-    # text = open(path.join(d, 'tags.txt')).read()
-
-
-    # tags = pd.read_csv('../data/movies_metadata.csv')
-    # tags['overview'].to_csv('overview.txt')
-    # text = open(path.join(d, 'overview.txt')).read()
-
-
-    # tags = pd.read_csv('../data/movies_metadata.csv')
-    # tags['genres'].to_csv('genres.txt')
-    # text = open(path.join(d, 'genres.txt')).read()
-
-
-
-    # adding stopwords
-    stopwords = set(STOPWORDS)
-    stopwords.add("int")
-    stopwords.add("ext")
-
     wc = WordCloud(max_words=1000, mask=mask, stopwords=stopwords, margin=1, random_state=1, collocations=False).generate(text)
     # store default colored image
     default_colors = wc.to_array()
@@ -96,17 +71,5 @@ def create_wordcloud_custom(text, image_filename):
     wc.to_file(new_filename)
 
 
-
-
-
-
-
-
 if __name__ == '__main__':
     pass
-    #
-    d = path.dirname('/Users/tbot/Dropbox/galvanize/a-smarter-flashcard/data/')
-    #
-    # # Read the whole text.
-    text = open(path.join(d, 'ds_flashcards_2.txt')).read()
-    # create_wordcloud(text)

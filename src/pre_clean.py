@@ -2,7 +2,9 @@ import re
 import pandas as pd
 import src.replace_dictionary as replace
 from nltk.stem.snowball import SnowballStemmer
-
+from nltk.corpus import stopwords
+from nltk.tokenize import RegexpTokenizer
+import string
 
 def read_cards(file_path):
     '''
@@ -16,7 +18,7 @@ def read_cards(file_path):
 def clean_dataframe(df):
     df2 = df.copy()
 
-    df2 = df2.applymap(lambda x: stemmer(replace_with_dict(strip_html(x))) if type(x) is str else ' ')
+    df2 = df2.applymap(lambda x: stopwords_stemmer(replace_with_dict(strip_html(x.lower()))) if type(x) is str else ' ')
 
     return df2
 
@@ -47,10 +49,12 @@ def collapse_df(df):
     df_collapsed["record"] = df["question"].map(str) + ' ' + df["answer"].map(str)
     return df_collapsed['record']
 
-def stemmer(text):
+def stopwords_stemmer(text):
+    text = re.sub(r'[^\w\s]','', text, re.UNICODE)
+    stop = set(stopwords.words('english'))
     snowball = SnowballStemmer('english')
     text_split = text.split()
-    text_snowball = [snowball.stem(word) for word in text_split]
+    text_snowball = [snowball.stem(word) for word in text_split if word not in stop]
     return_text = ' '.join(text_snowball)
     return return_text
 
