@@ -1,0 +1,41 @@
+
+<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/bmabey/pyLDAvis/files/ldavis.v1.0.0.css">
+
+
+<div id="ldavis_el9791745908281841282850225"></div>
+<script type="text/javascript">
+
+var ldavis_el9791745908281841282850225_data = {"mdsDat": {"Freq": [37.28489685058594, 31.965320587158203, 30.749786376953125], "cluster": [1, 1, 1], "topics": [1, 2, 3], "x": [-0.16031619905826647, -0.005056018320914998, 0.16537221737918148], "y": [0.09664142293165649, -0.18468179211958632, 0.08804036918792975]}, "tinfo": {"Category": ["Default", "Default", "Default", "Default", "Topic1", "Topic1", "Topic1", "Topic1", "Topic2", "Topic2", "Topic2", "Topic2", "Topic3", "Topic3", "Topic3", "Topic3"], "Freq": [7.0, 7.0, 5.0, 5.0, 4.23512077331543, 3.9911413192749023, 0.565714418888092, 0.5292474031448364, 6.124634742736816, 0.7447613477706909, 0.5352135896682739, 0.5867199301719666, 5.88663911819458, 0.5643672347068787, 0.5613753795623779, 0.6750643849372864], "Term": ["control", "use", "india", "empir", "india", "empir", "control", "use", "use", "empir", "india", "control", "control", "empir", "india", "use"], "Total": [7.0, 7.0, 5.0, 5.0, 5.331709861755371, 5.300270080566406, 7.039073467254639, 7.328946590423584, 7.328946590423584, 5.300270080566406, 5.331709861755371, 7.039073467254639, 7.039073467254639, 5.300270080566406, 5.331709861755371, 7.328946590423584], "loglift": [4.0, 3.0, 2.0, 1.0, 0.7562999725341797, 0.7028999924659729, -1.534600019454956, -1.6414999961853027, 0.9610000252723694, -0.8219000101089478, -1.1582000255584717, -1.3442000150680542, 1.000499963760376, -1.0605000257492065, -1.0717999935150146, -1.2055000066757202], "logprob": [4.0, 3.0, 2.0, 1.0, -0.7889000177383423, -0.8482000231742859, -2.802000045776367, -2.8685998916625977, -0.26600000262260437, -2.372999906539917, -2.703399896621704, -2.611599922180176, -0.2669000029563904, -2.611599922180176, -2.617000102996826, -2.432499885559082]}, "token.table": {"Topic": [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3], "Freq": [0.1420641541481018, 0.1420641541481018, 0.8523849248886108, 0.7546785473823547, 0.18866963684558868, 0.18866963684558868, 0.7502283453941345, 0.18755708634853363, 0.18755708634853363, 0.13644525408744812, 0.8186715245246887, 0.13644525408744812], "Term": ["control", "control", "control", "empir", "empir", "empir", "india", "india", "india", "use", "use", "use"]}, "R": 4, "lambda.step": 0.01, "plot.opts": {"xlab": "PC1", "ylab": "PC2"}, "topic.order": [1, 3, 2]};
+
+function LDAvis_load_lib(url, callback){
+  var s = document.createElement('script');
+  s.src = url;
+  s.async = true;
+  s.onreadystatechange = s.onload = callback;
+  s.onerror = function(){console.warn("failed to load library " + url);};
+  document.getElementsByTagName("head")[0].appendChild(s);
+}
+
+if(typeof(LDAvis) !== "undefined"){
+   // already loaded: just create the visualization
+   !function(LDAvis){
+       new LDAvis("#" + "ldavis_el9791745908281841282850225", ldavis_el9791745908281841282850225_data);
+   }(LDAvis);
+}else if(typeof define === "function" && define.amd){
+   // require.js is available: use it to load d3/LDAvis
+   require.config({paths: {d3: "https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min"}});
+   require(["d3"], function(d3){
+      window.d3 = d3;
+      LDAvis_load_lib("https://cdn.rawgit.com/bmabey/pyLDAvis/files/ldavis.v1.0.0.js", function(){
+        new LDAvis("#" + "ldavis_el9791745908281841282850225", ldavis_el9791745908281841282850225_data);
+      });
+    });
+}else{
+    // require.js not available: dynamically load d3 & LDAvis
+    LDAvis_load_lib("https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js", function(){
+         LDAvis_load_lib("https://cdn.rawgit.com/bmabey/pyLDAvis/files/ldavis.v1.0.0.js", function(){
+                 new LDAvis("#" + "ldavis_el9791745908281841282850225", ldavis_el9791745908281841282850225_data);
+            })
+         });
+}
+</script>

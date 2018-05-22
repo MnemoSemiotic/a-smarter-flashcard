@@ -1,5 +1,5 @@
 import src.pre_clean as clean
-import src.wordcloud as wc
+import src.wordclouder as wc
 import src.plotting as pt
 import pandas as pd
 import numpy as np
