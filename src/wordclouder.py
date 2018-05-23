@@ -5,6 +5,7 @@ from os import path
 import random
 import pandas as pd
 from wordcloud import WordCloud, STOPWORDS
+import pre_clean as clean
 
 def create_wordcloud_from_df(df, template_filename=None, output_filename='temp_wc'):
     '''
@@ -73,4 +74,28 @@ def create_wordcloud_custom(text, template_filename):
 
 
 if __name__ == '__main__':
-    create_wordcloud('Hey Adrian, This wordcloud will have your name in it, Adrian', 'delme_wc.png')
+    ''' Generate wordclouds on all demo data '''
+
+    # datascience cards
+    data = 'data/datascience_flashcards.txt'
+    df_datascience = clean.read_cards(data)
+    df_datascience_clean = clean.clean_dataframe(df_datascience)
+    df_datascience = clean.collapse_df(df_datascience_clean)
+
+    wc.create_wordcloud_from_df(df_datascience, "/Users/tbot/Dropbox/galvanize/a-smarter-flashcard/images/brain_template.png")
+
+    # biology cards
+    data = 'data/biology_flashcards.txt'
+    df_biology = clean.read_cards(data)
+    df_biology_clean = clean.clean_dataframe(df_biology)
+    df_biology = clean.collapse_df(df_biology_clean)
+
+    wc.create_wordcloud_from_df(df_biology, "images/beaker_template.png")
+
+    # history cards
+    data = 'data/history_flashcards.txt'
+    df_history = clean.read_cards(data)
+    df_history_clean = clean.clean_dataframe(df_history)
+    df_history = clean.collapse_df(df_history_clean)
+
+    wc.create_wordcloud_from_df(df_history, "images/knight_template.png")

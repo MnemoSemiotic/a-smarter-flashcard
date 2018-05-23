@@ -37,7 +37,7 @@ class LdaFlashcards(object):
         self.lda_coherence_score = None
 
         # compile the data for use in the class
-        self.built_corpus = build.Built_Corpus(self.filepaths, total_samples=1200)
+        self.built_corpus = build.Built_Corpus(self.filepaths, total_samples=total_samples)
 
         # pull filepath out from the serialized corpus
         self.corpus_cards = MmCorpus(self.built_corpus.serialized_text_path)
@@ -126,21 +126,29 @@ class LdaFlashcards(object):
         Pass in a list of strings of the types of plots to be built.  Read
         through the function for the names available.
         '''
-        print('\nCreating Plots: '.format(plots))
+        print('\nCreating Plots: {}'.format(plots))
         start = datetime.now()
+
+        # TODO: Modify method to pass in ranges/parameters for plots
 
         if 'top_words_table' in plots:
             pt.plot_top_words_table(self.get_top_words(), self.n_topics, self.built_corpus.total_samples, self.lda_coherence_score)
-
         if 'pyLDAvis' in plots:
             pt.plot_pyLDAvis(self.lda_model, self.corpus_cards,
                              self.built_corpus.vocabulary_, self.n_topics)
-
         if 'nmf_reconstruction' in plots:
             pt.plot_nmf_reconstruction(self.built_corpus.tfidf_)
+        if 'lsa_explained_var' in plots:
+            pt.plot_lsa_explained_var(self.built_corpus.tfidf_)
+        if 'tsne_kmeans_clusters' in plots:
+            pt.tsne_kmeans_clusters(self.built_corpus.tfidf_)
+        if 'kmeans_elbow_plots' in plots:
+            pt.kmeans_elbow_plots(self.built_corpus.tfidf_)
+        if 'kmeans_silhouette_plots' in plots:
+            pt.kmeans_silhouette_plots(self.built_corpus.tfidf_)
 
         end = datetime.now()
-        print("   Time taken: {}".format(end - start))
+        print("   Finished Plotting - Time taken: {}".format(end - start))
 
     def dump_lda_flashcards(self):
         '''
@@ -159,10 +167,34 @@ class LdaFlashcards(object):
         end = datetime.now()
         print("   Time taken: {}".format(end - start))
 
-if __name__ == '__main__':
-
+def run_demo():
+    '''
+    Run this demo in order to repopulate plots in the directory structure
+    '''
     filepaths = ['data/datascience_flashcards.txt', 'data/biology_flashcards.txt', 'data/history_flashcards.txt']
 
-    cards = LdaFlashcards(filepaths=filepaths, n_topics=3, total_samples='all')
+    samples = [90, 150, 300, 400, 500, 600, 900, 1200, 1800, 2400, 3000, 4000, 5000, 6000]
+    num_topics = [3,4,5,6,7,8,9,10]
 
-    cards.build_plots(['nmf_reconstruction'])
+    for sample_size in samples:
+        for n in num_topics:
+
+            cards = LdaFlashcards(filepaths=filepaths, n_topics=n, total_samples=sample_size)
+
+            cards.build_plots(['top_words_table',
+                               'kmeans_silhouette_plots',
+                               'pyLDAvis',
+                               'nmf_reconstruction',
+                               'lsa_explained_var',
+                               'tsne_kmeans_clusters'
+                               'kmeans_elbow_plots'
+                               'kmeans_silhouette_plots'
+                               ])
+
+if __name__ == '__main__':
+    # filepaths = ['data/datascience_flashcards.txt', 'data/biology_flashcards.txt', 'data/history_flashcards.txt']
+    #
+    # cards = LdaFlashcards(filepaths=filepaths, n_topics=3, total_samples=1200)
+    #
+    # cards.build_plots(['kmeans_silhouette_plots'])
+    run_demo()
