@@ -260,7 +260,7 @@ class Built_Corpus:
         self.dump_built_corpus()
 
         end = datetime.now()
-        print("\n\n\nCorpus Builder ------ Total Time taken: {}, for {} samples\n\n\n".format(end - start, total_samples))
+        print("\n\n\nCorpus Builder Built------ Total Time taken: {}, for {} samples\n\n\n".format(end - start, total_samples))
 
     def dump_built_corpus(self):
         '''
@@ -270,7 +270,7 @@ class Built_Corpus:
         start = datetime.now()
 
         timestamp = str(datetime.now()).replace(' ', '_').replace(':','')
-        pickle_filename = 'data/pickle/built_corpus_' + timestamp + '.pickle'
+        pickle_filename = 'data/pickle/built_corpus/built_corpus_' + timestamp + '.pickle'
         with open(pickle_filename, 'wb') as f:
             pickle.dump(self, f, protocol=pickle.HIGHEST_PROTOCOL)
 

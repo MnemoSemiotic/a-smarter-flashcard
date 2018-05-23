@@ -220,7 +220,7 @@ if __name__ == '__main__':
         frames = [df_datascience, df_biology, df_history]
 
         # Condense read cards into one dataframe, reindex
-        full_corpus_filepath = r'data/full_corpus.txt'
+        full_demo_corpus_filepath = r'data/full_demo_corpus.txt'
         print('Compiling cleaned decks, randomizing and saving to file: {}'.format(full_corpus_filepath))
         corpus = pd.concat(frames, ignore_index=True)
         # rows = np.random.choice(corpus.index.values, len(corpus))
@@ -228,6 +228,8 @@ if __name__ == '__main__':
         np.savetxt(full_corpus_filepath, corpus.values, fmt='%s')
 
         document_count = len(corpus)
+
+
 
         # clean corpus
         start = datetime.now()
@@ -285,6 +287,12 @@ if __name__ == '__main__':
         MmCorpus.serialize('data/cards_serialized.mm', (vocabulary.doc2bow(doc) for doc in token_lst))
         end = datetime.now()
         print("   Time taken: {}".format(end - start))
+
+
+
+
+
+
 
         from gensim.models import LdaModel
         import pyLDAvis as ldavis
@@ -463,7 +471,7 @@ if __name__ == '__main__':
 
 
 
-
+'''
         print('\nUse sklearn LSA (TruncatedSVD) plotting to get an idea of n topics for maximizing explained variance')
         start = datetime.now()
 
