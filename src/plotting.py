@@ -145,8 +145,6 @@ def plot_nmf_reconstruction(tfidf, solver='mu', max_iter=100):
     n_topics = [[1, 2, 3, 4, 5, 6,7,8,9,10],
                 [10,20,30,40,50,60,70,80,90,100]]
 
-
-
     for range in n_topics:
         start = datetime.now()
         reconstruction_error = []
@@ -207,9 +205,8 @@ def plot_lsa_explained_var(tfidf, max_iter=10):
         'size': 8,
         }
 
-
     # exit the function if the corpus is less than 1200
-    if tfidf.shape[0] < 1200:
+    if tfidf.shape[0] < 90:
         print('exiting... TruncatedSVD will fail with too small a corpus.')
         return
 

@@ -57,7 +57,6 @@ def create_wordcloud_custom(text, template_filename):
     ===================
     Using the recolor method and custom coloring functions.
     """
-
     d = path.dirname(__file__)
 
     # read image from filename
@@ -74,7 +73,9 @@ def create_wordcloud_custom(text, template_filename):
 
 
 if __name__ == '__main__':
-    ''' Generate wordclouds on all demo data '''
+    '''
+    Generate wordclouds on all demo data
+    '''
 
     # datascience cards
     data = 'data/datascience_flashcards.txt'

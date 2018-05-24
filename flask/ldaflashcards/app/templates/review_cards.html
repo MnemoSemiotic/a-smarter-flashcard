@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("#cardback").hide();
+    $("button").click(function(){
+        $('#cardback').removeClass('hidden')
+        $("#cardback").toggle();
+    });
+});
+</script>
+</head>
+<body>
+  <table>
+    <tr valign="top">
+      <td>
+
+               <p>score: {{ card.score }}&nbsp;Card Id: {{ card.id }}&nbsp;Last Seen: {{ card.timestamp }}</p>
+              <div id="front">
+                <p>front:</p>
+               <h2>{{ card.front }}</h3>
+              </div>
+              <div id="cardback" class="hidden">
+                <p>back:</p>
+               <h3>{{ card.back }}</h3>
+              </div>
+               <button>Show/Hide Back</button>
+               <p></p>
+
+      </td>
+    </tr>
+  </table>
+
+{% endblock %}

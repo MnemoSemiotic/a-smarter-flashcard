@@ -93,6 +93,18 @@ class LdaFlashcards(object):
         end = datetime.now()
         print("   Time taken: {}".format(end - start))
 
+    def get_n_similar(self, card_distr, n):
+        '''
+        Given a document's distribution of topics, return the indices for
+        the n most similar documents from the raw corpus.
+        '''
+        pass
+
+    def get_n_least_similar(self, card_distr, n):
+        '''
+        '''
+        pass
+
     def get_best_n_topics(self):
         '''
         maybe this can be fitting svd on the tfidf, then running a 'grid search' on kmeans with the svd output.  Reducing Sum of Squares
@@ -119,7 +131,6 @@ class LdaFlashcards(object):
         print("   Time taken: {}".format(end - start))
 
         return top_topics_df
-
 
     def build_plots(self, plots=[]):
         '''
@@ -167,34 +178,54 @@ class LdaFlashcards(object):
         end = datetime.now()
         print("   Time taken: {}".format(end - start))
 
-def run_demo():
+def run_demo(filepaths, samples, num_topics):
     '''
     Run this demo in order to repopulate plots in the directory structure
+    TODO: separate the plotting functions that don't care about n_topics
     '''
-    filepaths = ['data/datascience_flashcards.txt', 'data/biology_flashcards.txt', 'data/history_flashcards.txt']
 
-    samples = [90, 150, 300, 400, 500, 600, 900, 1200, 1800, 2400, 3000, 4000, 5000, 6000]
-    num_topics = [3,4,5,6,7,8,9,10]
+    outfile = open('data/coherences2.txt','a')
+    labels = 'num_topics, sample_size, lda_coherence_score'
+    out = labels + '\n'
+    outfile.write(out)
 
     for sample_size in samples:
         for n in num_topics:
-
             cards = LdaFlashcards(filepaths=filepaths, n_topics=n, total_samples=sample_size)
 
             cards.build_plots(['top_words_table',
-                               'kmeans_silhouette_plots',
-                               'pyLDAvis',
-                               'nmf_reconstruction',
-                               'lsa_explained_var',
-                               'tsne_kmeans_clusters'
-                               'kmeans_elbow_plots'
-                               'kmeans_silhouette_plots'
+                               'pyLDAvis'
                                ])
+            out =  str(n) + ',' + str(sample_size) + ',' + str(cards.lda_coherence_score) + '\n'
+            outfile.write(out)
+    outfile.close()
+
+    for sample_size in samples:
+        cards = LdaFlashcards(filepaths=filepaths, n_topics=3, total_samples=sample_size)
+        cards.build_plots(['kmeans_silhouette_plots',
+                           'nmf_reconstruction',
+                           'lsa_explained_var',
+                           'tsne_kmeans_clusters',
+                           'kmeans_elbow_plots',
+                           'kmeans_silhouette_plots'
+                           ])
 
 if __name__ == '__main__':
+    # # Build 3 topic model, 1200 cards from all corpora
     # filepaths = ['data/datascience_flashcards.txt', 'data/biology_flashcards.txt', 'data/history_flashcards.txt']
     #
     # cards = LdaFlashcards(filepaths=filepaths, n_topics=3, total_samples=1200)
     #
     # cards.build_plots(['kmeans_silhouette_plots'])
-    run_demo()
+
+    # # Generate plots on various sample sizes and num_topics
+    #
+    # samples = [90, 150, 300, 400, 500, 600, 900, 1200, 1800, 2400, 3000, 4000, 5000, 6000, 8000, 10000, 12000, 14000, 16000, 18000, 20000]
+    # filepaths = ['data/datascience_flashcards.txt', 'data/biology_flashcards.txt', 'data/history_flashcards.txt']
+    # num_topics = [3,4,5,6,7,8,9,10,11,12]
+    # run_demo(filepaths, samples, num_topics)
+
+    # Build 5 topic LdaModel using History corpus
+    filepaths = ['data/history_flashcards.txt']
+    cards = LdaFlashcards(filepaths=filepaths, n_topics=3, total_samples=2000)
+    cards.build_plots(['pyLDAvis'])
