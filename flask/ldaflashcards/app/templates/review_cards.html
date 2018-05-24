@@ -13,24 +13,54 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-  <table>
-    <tr valign="top">
-      <td>
+  <div class='content-wrapper'>
+    <div class='flashcard-wrapper'
+    <table>
+      <tr valign="top">
+        <td>
 
-               <p>score: {{ card.score }}&nbsp;Card Id: {{ card.id }}&nbsp;Last Seen: {{ card.timestamp }}</p>
-              <div id="front">
-                <p>front:</p>
-               <h2>{{ card.front }}</h3>
-              </div>
-              <div id="cardback" class="hidden">
-                <p>back:</p>
-               <h3>{{ card.back }}</h3>
-              </div>
-               <button>Show/Hide Back</button>
-               <p></p>
+                 <h3>Score: {{ card.score }}</h3>
+                 <hr>
+                <div id="front">
 
-      </td>
-    </tr>
-  </table>
+                 <h2>{{ card.front }}</h3>
+                </div>
+                <hr>
+                <div id="cardback" class="hidden">
 
+                 <h3>{{ card.back }}</h3>
+                </div>
+                 <button>Show/Hide Back</button>
+                 <hr>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            <table>
+              <tr>
+                <td>
+
+                  <form action="{{ url_for('decrease_score') }}" class='submits-left'>
+                    <input type="submit" value="Not Yet" />
+                  </form>
+                </td>
+                <td>
+                  <form action="{{ url_for('add_corpus_card') }}" >
+                    <input type="submit" value="Add Similar Card from Corpus" />
+                  </form>
+                </td>
+                <td>
+                  <form action="{{ url_for('increase_score') }}" class='submits-right'>
+                  <input type="submit" value="I got This" />
+                </td>
+              </tr>
+            </table>
+            </form>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
 {% endblock %}

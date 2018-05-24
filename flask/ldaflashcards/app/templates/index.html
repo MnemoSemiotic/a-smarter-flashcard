@@ -3,14 +3,17 @@
 
 <center>
 {% block content %}
-
+  <div class='content-wrapper'>
     <h1>Hi, {{ current_user.username }}!</h1>
     <p> Would you like to extrapolate today?</p>
     <!-- {% for post in posts %}
     <div><p>{{ post.author.username }} says: <b> {{ post.body }}</b></p></div>
     {% endfor %} -->
     <center>
-      <img class='center' src="static/knight_template_generated.png" width="500">
+      <a href="{{ url_for('review_cards')}}">
+        <img class='center' src="static/knight_template_generated.png" width="300">
+      </a>
     </center>
+  </div>
 {% endblock %}
 </center>

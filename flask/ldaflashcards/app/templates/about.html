@@ -1,18 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% if title %}
-      <title>{{ title }} - predictfraud</title>
-    {% else %}
+  <div class='content-wrapper'>
       <title> About LDA Flashcards</title>
-    {% endif %}
 
 
-    <h2>
-      Hey {{ user.username }}
-    </h2>
     <p>
-      This is an interactive map of the latent topics discerned by the LDA model in a corpus of 2000 History flashcards.
+      Hey {{ user.username }}, This is an interactive map of the latent topics discerned by the LDA model in a corpus of 2000 History flashcards.
     </p>
     <p>
       The plot is interactive.
@@ -57,5 +51,5 @@
              });
     }
     </script>
-
+</div>
 {% endblock %}

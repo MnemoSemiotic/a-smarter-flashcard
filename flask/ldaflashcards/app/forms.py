@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, Length, Email, EqualTo
 from app.models import User, flashcard
+from app import db
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
@@ -55,5 +56,3 @@ class AddFlashcardForm(FlaskForm):
         card = flashcard.query.filter_by(back=back.data).first()
         if card is not None:
             raise ValidationError('The Back of this card already exists in the deck')
-
-# class ReviewCardForm(FlaskForm):

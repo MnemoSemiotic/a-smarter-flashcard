@@ -68,15 +68,6 @@ class Post(db.Model):
     def __repr__(self):
         return '<Post {}>'.format(self.body)
 
-# class fraudprediction(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-#     data = db.Column(db.String(30000))
-#     prediction = db.Column(db.Numeric(1,3))
-#
-#     def __repr__(self):
-#         return '<Prediction {}>'.format(self.prediction)
-
 class flashcard(db.Model):
     # get most recent card:
     # flashcard.query.order_by(flashcard.timestamp.desc()).get(1)

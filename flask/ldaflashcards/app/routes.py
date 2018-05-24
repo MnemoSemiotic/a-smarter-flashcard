@@ -6,6 +6,9 @@ from app.forms import LoginForm, RegistrationForm, EditProfileForm, AddFlashcard
 from app.models import User, flashcard
 from datetime import datetime
 import os
+import random
+import pandas as pd
+import numpy as np
 
 # class processing():
 import json
@@ -13,53 +16,12 @@ import urllib.request
 import pandas as pd
 import pickle
 
-# class preparedata(object):
-#
-#     def apply(self):
-#         self.get_request()
-#         self.cleanit()
-#         return self.new_df
-#
-#     def get_request(self):
-#
-#         url = 'http://galvanize-case-study-on-fraud.herokuapp.com/data_point'
-#         respons = urllib.request.urlopen(url)
-#         data = json.loads(respons.read().decode(respons.info().get_param('charset') or 'utf-8'))
-#         new_dict = {}
-#         new_dict1 = {}
-#         cols = ['body_length', 'channels', 'delivery_method', 'fb_published', 'gts',
-#        'has_analytics', 'has_header', 'has_logo', 'name_length', 'num_order', 'num_payouts',
-#        'object_id', 'org_facebook', 'org_twitter', 'sale_duration',
-#        'sale_duration2', 'show_map', 'user_age', 'user_type', 'venue_latitude',
-#        'venue_longitude', 'has_xml', 'has_org_descr', 'count_event_id',
-#        'total_av', 'profit', 'quant_sold', 'quant_total', 'spam_domain',
-#        'number_payouts', 'dif_address', 'dif_names', 'total_amount',
-#        'mean_amount']
-#         new_dict['description'] = ['cat']
-#         for c in cols:
-#             new_dict[c] = [0]
-#         for k, v in data.items():
-#             new_dict1[k] = [v]
-#         new_dict1.update(new_dict)
-#         self.df = pd.DataFrame.from_dict(new_dict1)
-#
-#
-#     def cleanit(self):
-#         date_time_list = ('approx_payout_date', 'event_created', 'user_created', 'event_end', 'event_published', 'event_start')
-#         self.cleaned_df = clean(self.df, date_time_list)
-#         self.new_df = self.cleaned_df.apply_functions(LDA=False)
-#
-#     def predict_proba(self, model, X):
-#         """Make probability predictions on new data.
-#         Parameters
-#         ----------
-#         X: A numpy array or list of text fragments, to be used as predictors.
-#         Returns
-#         -------
-#         probs: A (n_obs, n_classes) numpy array of predicted class probabilities.
-#         """
-#
-#         return model.predict_proba(X)
+# Gensim imports
+from gensim import corpora
+from gensim.corpora import Dictionary, MmCorpus
+
+# Pull in dictionary
+vocabulary = corpora.Dictionary.load('app/cards.vocab')
 
 
 @app.before_request
@@ -72,20 +34,8 @@ def before_request():
 @app.route('/index')
 @login_required
 def index():
-    posts = [
-        {
-            'author': {'username':'John'},
-            'body': 'Beautiful day in Portland!'
 
-        },
-        {
-            'author': {'username':'Brobb'},
-            'body': 'Beautiful day in Skoortland!'
-        }
-
-    ]
-
-    return render_template('index.html', title='Home', posts=posts)
+    return render_template('index.html', title='Home')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -126,40 +76,15 @@ def register():
     return render_template('register.html', title='Register', form=form)
 
 
-# @app.route('/predict')
-# def b(name=None):
-#
-#     p = preparedata()
-#     cleaned_df = p.apply()
-#     path = 'app/models/finalized_model.pkl'
-#     # with open(path) as f:
-#     model = pickle.load(open('app/models/finalized_model.pkl', 'rb'))
-#     print(cleaned_df.columns)
-#     # pred1 = str(model.predict_proba([data])[0])
-#     pred = p.predict_proba(model, cleaned_df)
-#
-#     print('Likelihood that this is fraud: {0:0.2%}'.format(pred[0][1]))
-#     # new_df = cleaned_df.apply_functions(LDA=False)
-#     timestamp = datetime.utcnow()
-#     data = cleaned_df.to_string()
-#
-#     prediction = fraudprediction(timestamp=timestamp, data=data, prediction=pred[0][1])
-#     db.session.add(prediction)
-#     db.session.commit()
-#
-#     return 'Likelihood that this is fraud: {0:0.2%}'.format(pred[0][1])
-
 @app.route('/user/<username>')
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
     posts = [
-        {'author': user, 'body': 'Topic modeling can likely find underlying patterns in a corpus that educators might miss.'},
-        {'author': user, 'body': 'Spaced repetition reinforces memory by leveraging the utility of forgetting'}
+        {'author': user, 'body': 'Topic modeling can likely find underlying patterns that educators might miss.'},
+        {'author': user, 'body': 'Spaced repetition reinforces memory by leveraging the utility of forgetting.'}
     ]
     return render_template('user.html', user=user, posts=posts)
-
-
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
@@ -216,7 +141,6 @@ def about():
 
 @app.route('/add_card', methods=['GET', 'POST'])
 def add_card():
-
     form = AddFlashcardForm()
     if form.validate_on_submit():
         card = flashcard(front=form.front.data, back=form.back.data)
@@ -226,19 +150,57 @@ def add_card():
         return redirect(url_for('add_card'))
     return render_template('add_card.html', title='Register', form=form)
 
-@app.route('/review_cards')
+@app.route('/add_corpus_card', methods=['GET','POST'])
+def add_corpus_card():
+    file_path = 'app/history_flashcards.txt'
+
+    df = pd.read_csv(file_path, sep='\t', names=['question','answer'])
+
+    n_samples = 10
+
+    rows = np.random.choice(df.index.values, n_samples)
+    choice = random.choice(rows)
+    row = df.iloc[choice]
+
+    front = row['question']
+    back = row['answer']
+
+    print('\n\n\n\n***********ADDING*******************')
+    print('row#: {}'.format(rows))
+    print('question: {}'.format(row['question']))
+    print('answer: {}'.format(row['answer']))
+    print('************************************\n\n\n\n')
+
+    card = flashcard(front=front, back=back)
+    db.session.add(card)
+    db.session.commit()
+    flash('Similar Card Added!')
+
+    return redirect(url_for('review_cards'))
+
+@app.route('/review_cards', methods=['GET', 'POST'])
 @login_required
 def review_cards():
-    # TODO: Exclude scores greater than 5
+
     card = flashcard.query.order_by(flashcard.timestamp.asc()).first()
-    print(card)
+    # card = random.choice(card)
 
     # update the timestamp
     card.timestamp = datetime.utcnow()
     db.session.commit()
 
-    # TODO: If no cards with score less than 6, add new card
+    return render_template('review_cards.html', title='Register', card=card)
 
-    # TODO: If timestamp is < 3 minutes from now, add new card
+@app.route('/increase_score', methods=['GET','POST'])
+def increase_score():
+    card = flashcard.query.order_by(flashcard.timestamp.desc()).first()
+    card.score += 1
+    db.session.commit()
+    return redirect(url_for('review_cards'))
 
-    return render_template('review_cards.html', card=card)
+@app.route('/decrease_score', methods=['GET','POST'])
+def decrease_score():
+    card = flashcard.query.order_by(flashcard.timestamp.desc()).first()
+    card.score -= 1
+    db.session.commit()
+    return redirect(url_for('review_cards'))

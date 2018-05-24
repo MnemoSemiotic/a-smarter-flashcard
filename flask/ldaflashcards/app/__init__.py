@@ -30,6 +30,4 @@ if not app.debug:
     app.logger.setLevel(logging.INFO)
     app.logger.info('predictfraud startup')
 
-
-
 from app import routes, models, errors

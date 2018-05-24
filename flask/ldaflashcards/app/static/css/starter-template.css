@@ -2,7 +2,31 @@ body {
   padding-top: 50px;
 }
 .starter-template {
-  padding: 40px 15px;
+  padding: 200px 15px;
   text-align: center;
 }
 .hidden { display: none; }
+.content-wrapper {
+  padding: 0px 150px;
+  background-color:'light-gray';
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.flashcard-wrapper {
+  width:80%;
+  padding: 0px 150px;
+  background-color:'light-gray';
+  margin-left:auto;
+  margin-right:auto;
+}
+
+.submits-left {
+  float:left;
+  background-color:'red';
+}
+
+.submits-right {
+  float:right;
+  color:'green';
+}
