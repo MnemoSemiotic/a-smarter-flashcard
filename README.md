@@ -1,4 +1,5 @@
-### I am currently updating this documentation to reflect:
+## NOTE: This README is outdated
+### I am currently updating the documentation to reflect:
 * simple flashcard recommender app using flask
 * "optimal" number of topics/metrics proposals for LDA
 * visualizations of growing corpus, cluster cohesion and topic coherence
