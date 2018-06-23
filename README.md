@@ -1,3 +1,8 @@
+### I am currently updating this documentation to reflect:
+* simple flashcard recommender app using flask
+* "optimal" number of topics/metrics proposals for LDA
+* visualizations of growing corpus, cluster cohesion and topic coherence
+
 
 # In Search of a Smarter Flashcard
 ## Part 1: Discerning Topics, Pedagogical Implications
