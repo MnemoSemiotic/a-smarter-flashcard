@@ -489,20 +489,4 @@ Off-topic cards are likely present
 <br />
 <br />
 
--------------------------------------------------------------------------------
-## **Next Steps**
 
-### *Improvement 1: Provide a simple API for flashcards*
-1. Build topic distribution table when new cards are added
-2. Retrieve flashcard by function of similarity, success and last time reviewed
-3. Update success table for flashcard user
-
-### *Improvement 2: Provide an Interface for Card Review*
-1. Swipe Left/Swipe Right simple front end.
-2. Update success/fail.
-3. Discern “Strong” and “Weak” topics.
-
-### *Improvement 3: Smart Flashcard Delivery*
-1. Incorporate Spaced Repetition and randomness settings into reviews.
-2. Use similarity metrics to discern “Weak” and “Strong” topics, based on card review successes.
-3. Deliver review cards as a function of spaced repetition, strength, and similarity.
